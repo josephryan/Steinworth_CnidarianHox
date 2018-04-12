@@ -20,6 +20,7 @@ ax9  - Anthox9
 *Lscu* - *Lobactis scutaria* (Hexacorallia)
 *Crub* - *Corallium rubrum* (Octocorallia)
 *Ecav* - *Eunicella cavolinii* (Octocorallia)
+*Rren* - *Renilla reniformis* (Octocorallia)
 *Hsan* - *Haliclystus sanjuanensis* (Staurozoa)
 *Ccru* - *Calvadosia cruxmelitensis* (Staurozoa)
 *Cfle* - *Chironex fleckeri* (Cubozoa)
@@ -54,7 +55,7 @@ Accurately classify cnidarian Hox and ParaHox genes from a wide array of cnidari
 
 #### 2.1 Build dataset.
 
-We will start with four sets of Hox/ParaHox homeodomains from the curated HomeoDB (Zhong et al, 2008): *Homo sapiens*, *Branchiostoma floridae*, *Drosophila melanogaster*, and *Tribolium castaneum*. We will include the spiralia Hox/ParaHox homeodomains *Capitella teleta* and *Crassostrea gigas* (as classified in Paps et al, 2015 and Zwarycz et al, 2015). We will include the Hox/ParaHox genes from *Nematostella vectensis* and *Acropora digitifera* (as classified in DuBuc et al, 2012). We will include the *Hydra magnipapillata* and *Clytia hemisphaerica* Hox/ParaHox genes (as classified in Chiori et al, 2009). NOTE: HmaCnox4 is listed as pirS39067; we could not find this so are using CAA45911.1. We will use hd60.hmm hidden Markov model from Zwarycz et al 2015 to search transcriptomes from the following:  *Anthopleura elegantissima*, *Lobactis scutaria*, *Corallium rubrum*, *Eunicella cavolinii*, *Haliclystus sanjuanensis*, *Calvadosia cruxmelitensis*, *Chironex fleckeri*, *Alatina alata*, *Cassiopea xamachana*, *Chrysaora fuscescens*, and *Craspedacusta sowerbyi*.
+We will start with four sets of Hox/ParaHox homeodomains from the curated HomeoDB (Zhong et al, 2008): *Homo sapiens*, *Branchiostoma floridae*, *Drosophila melanogaster*, and *Tribolium castaneum*. We will include the spiralia Hox/ParaHox homeodomains *Capitella teleta* and *Crassostrea gigas* (as classified in Paps et al, 2015 and Zwarycz et al, 2015). We will include the Hox/ParaHox genes from *Nematostella vectensis* and *Acropora digitifera* (as classified in DuBuc et al, 2012). We will include the *Hydra magnipapillata* and *Clytia hemisphaerica* Hox/ParaHox genes (as classified in Chiori et al, 2009). NOTE: HmaCnox4 is listed as pirS39067; we could not find this so are using CAA45911.1. We will use hd60.hmm hidden Markov model from Zwarycz et al 2015 to search transcriptomes from the following:  *Anthopleura elegantissima*, *Lobactis scutaria*, *Corallium rubrum*, *Renilla reniforms*, *Eunicella cavolinii*, *Haliclystus sanjuanensis*, *Calvadosia cruxmelitensis*, *Chironex fleckeri*, *Alatina alata*, *Cassiopea xamachana*, *Chrysaora fuscescens*, and *Craspedacusta sowerbyi*.
 
 This script runs hmmsearch, stockholm2fasta, and some custom code to remove indels and fill end gaps.
 ```
@@ -90,10 +91,11 @@ raxmlHPC-SSE3.PTHREDAS -T 25 -d -p [random_number] -# 25 -m PROTGAMMA[best-fit_m
 iqtree -m [best-fit_model]+G4 -s [alignment_file] -pre [prefix] -bb 1000
 ```
 
-#### COMPARE Iqtree and 50 rax trees using rax to report the likelihood values
+#### COMPARE Iqtree and 50 rax trees using rax to report the likelihood values; generate a likelihood score using RAxML for Iq-tree and grep for the likelihood values from RAxML_info files for RAxML runs.
 
 ```
-insert that cmd please
+raxmlHPC-SSE3 -f e -m PROTGAMMA[best-fit_model] -t [single-gene_tree] -s [alignment_file] -n [output_name]
+grep 'Starting final GAMMA-based' *info*
 ```
 
 ### Run bootstraps and apply them to the best tree above
@@ -107,7 +109,7 @@ raxmlHPC -m PROTGAMMA[best-fit_model] -p 12345 -f b -t RAxML_bestTree.[name] -z 
 
 #### 2.6 Mr. Bayes
 
-We will run MrBayes with the following command:
+We will run 5 MrBayes runs with the following command:
 
 ```mpirun -np 25 mb hox.nex```
 
@@ -125,10 +127,11 @@ sumt filename=FILE.nex nRuns=2 Relburnin=YES BurninFrac=.25 Contype=Allcompat;
 Since we cannot use Bayesian principles to evaluate our ML trees, we will use ML principles to evaluate the Bayes trees. If Bayes tree has better likelihood score than the ML tree we will report the Bayes tree as our main figure with BS values from above. If our ML tree has a higher likelhood than our Bayes tree we will report the ML tree with Bayesian log likelihood scores.
 All trees will be presented supplement.  And differences between Bayes and ML will be discussed.
 
-#### 2.7 SOWH Test
+#### 2.7 AU Test
 
-We will test the following topologies with the SOWH test sowhat
+We will test the following topologies with the AU test using IQTREE
 ```
+((ax9,gsx),all,other,clades)
 ((ax6a,ax6),all,other,clades)
 ((ax6a,ax6,Hox1),all,other,clades)
 ((ax7,ax8a,ax8b,Hox2),all,other,clades)
@@ -137,9 +140,15 @@ We will test the following topologies with the SOWH test sowhat
 ((ax1,ax1a,bilat-post,bilat-cent),all,other,clades)
 ```
 
+**** 2.8 How we will report results
+
+* Report clades as-is where best Baysian and best ML tree agree 
+
+* Determine the likelihood score for best ML tree and best Bayesian tree (choose ML tree if Bayesian tree has a polytomy). Report clades from the tree with the highest likelihood, mention the conflict.  Report summaries of both trees as main figures. 
+
 ## 3 WORK COMPLETED SO FAR WITH DATES
 
-We have not completed any tests so far
+We have not completed any tests prior to April 12, 2018 (even though there have been some changes prior to running tests).
 
 ## 4 LITERATURE REFERENCED
 
