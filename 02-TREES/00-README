@@ -1,0 +1,6 @@
+cnid_hox_ml.tre - Maximum likelihood tree, duplicates sequences have been pruned, this tree appears as Figure 1 in manuscript
+
+cnid_hox_bayesian.tre - Bayesian tree, duplicates sequences have been pruned, this tree appears as Supplementary Figure 1 in manuscript
+
+cnid_hox_w_hydra_hoxc3_ml.tre - Maximum likelihood tree, includes HoxC3 from Hydra vulgaris which was unintentionally left out of the original analyses, duplicates sequences have been pruned, this tree appears as Supplementary Figure 2 in manuscript
+
