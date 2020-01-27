@@ -1,0 +1,4 @@
+cnid_hox_aln.fa - this is the alignment that should be used for future studies. It includes all sequences including Hydra vulgaris HoxC3 and duplicates have been removed.
+
+cnid_hox_w_duplicates_aln.fa - this alignment should be used to repeat the analyses performed in Steinworth et al. It includes duplicates from our transcriptome data. It also includes Hydra vulgaris HoxC3, which would need to be removed for repeating some analyses. 
+
