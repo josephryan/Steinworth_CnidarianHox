@@ -9,7 +9,7 @@ _Manually combined all sequences in cnid_hox_plus.fa with bilaterian and known c
 
 2\. Generate an initial phylogenetic tree using resulting alignment from `hmm2aln.pl`
 
-requires IQ-tree (ADD URL)
+requires IQ-tree (http://www.iqtree.org/)
 
 iqtree-omp -s all_hox_plus.fa -nt AUTO -bb 1000 -m LG -pre MLtree_withgaps > iq.out 2> iq.err
 
