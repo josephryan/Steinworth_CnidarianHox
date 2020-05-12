@@ -11,7 +11,9 @@ _Combine all sequences in cnid_hox_plus.fa with bilaterian and known cnidarian h
 
  `./nogaps.py all_hox_plus.fa`
 
-_Add back in sequences cloned from Cassiopea xamachana to file all_hox_plus.fa_wholeSeqs and call this file all_hox_plus.fa_
+_Add back in sequences cloned from Cassiopea xamachana to file all_hox_plus.fa_wholeSeqs and call this file final_all_hox_plus.fa_
+
+_Remove duplicate sequences_
 
 3\. Generate an initial phylogenetic tree using resulting alignment from `hmm2aln.pl`
 
