@@ -68,7 +68,7 @@ raxmlHPC-SSE3 -f e -m PROTGAMMALG -t 03_hox.nex.run2.newick -s ../subalign -n ba
 
 raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.con.newick -s ../subalign -n bayes_con_raxml`
 
-_Compare final GAMMA-based score to RAxML trees and select best tree for main figure`
+_Compare final GAMMA-based score to RAxML trees and select best tree for main figure_
 
 
 AU Test
