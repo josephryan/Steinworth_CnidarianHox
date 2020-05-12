@@ -5,86 +5,64 @@ requires: `HMMer` (http://hmmer.org/) and `hmm2aln.pl` (https://github.com/josep
 
  `./hmm2aln.pl --hmm=hd60.hmm --name=HD --fasta_dir=02-RENAMED_DATA --threads=40 --nofillcnf=nofill.hox.conf > cnid_hox_plus.fa`
 
-_Manually combined all sequences in cnid_hox_plus.fa with bilaterian and known cnidarian homeoboxes to create file, all_hox_plus.fa_
+_Combine all sequences in cnid_hox_plus.fa with bilaterian and known cnidarian homeoboxes to create file, all_hox_plus.fa_
 
-2\. Generate an initial phylogenetic tree using resulting alignment from `hmm2aln.pl`
+2\. Remove sequences with 5 or more gaps using custom script
+`./nogaps.py all_hox_plus.fa`
+
+_Add back in sequences cloned from Cassiopea xamachana to file all_hox_plus.fa_wholeSeqs and call this file all_hox_plus.fa_
+
+3\. Generate an initial phylogenetic tree using resulting alignment from `hmm2aln.pl`
 
 requires IQ-tree (http://www.iqtree.org/)
 
-iqtree-omp -s all_hox_plus.fa -nt AUTO -bb 1000 -m LG -pre MLtree_withgaps > iq.out 2> iq.err
+`iqtree-omp -s final_all_hox_plus.fa -nt AUTO -bb 1000 -m LG -pre MLtree_withgaps > iq.out 2> iq.err`
 
-3\. Using resulting tree and alignment, prune non-Hox/ParaHox genes using make subalignment
-(requires `make_subalignment` (https://github.com/josephryan/make_subalignment)
-`./make_subalignment2 --tree=MLtree_withgaps.treefile --aln=all_hox_plus.fa --root=Anthopleura_elegantissima_45195 --pre=Nvec`
+4\. Using resulting tree and alignment, prune non-Hox/ParaHox genes using make subalignment
+(requires `make_subalignment_fasta` (https://github.com/josephryan/make_subalignment_fasta)
+`./make_subalignment_fasta --tree=MLtree_withgaps.treefile --aln=final_all_hox_plus.fa --root=Anthopleura_elegantissima_45195 --pre=Nvec`
 
-4\. Using the resulting alignment from make_subalignment run the following ML trees 
+5\. Using the resulting alignment from make_subalignment run the following ML trees 
 
   a\. RAXML with 25 starting parsimony trees
-  `raxmlHPC-PTHREADS-SSE3 -T 25 -p 1234 -# 25 -m PROTGAMMALG -s subalign -n raxMLwithGaps_mp
+  `raxmlHPC-PTHREADS-SSE3 -T 25 -p 1234 -# 25 -m PROTGAMMALG -s subalign -n raxML_mp`
 
   b\. RAXML with 25 random starting trees
-  `raxmlHPC-PTHREADS-SSE3 -T 25 -d -p 1234 -# 25 -m PROTGAMMALG -s subalign -n raxMLwithGaps_rt`
+  `raxmlHPC-PTHREADS-SSE3 -T 25 -d -p 1234 -# 25 -m PROTGAMMALG -s subalign -n raxML_rt`
 
   c\. IQTREE
-  `iqtree -m LG+G4 -s subalign -pre iqtree_withgaps -bb 1000`
+  `iqtree -m LG+G4 -s subalign -pre iqtree -bb 1000`
 
-5\. Evaluate the likelihood scores of the IQTREE using RAxML (for apples-to-apples comparison of likelihoods)
-`raxmlHPC-SSE3 -f e -m PROTGAMMALG -t iqtree_withgaps.treefile -s subalign -n iqtree_raxml`
+6\. Evaluate the likelihood scores of the IQTREE using RAxML (for apples-to-apples comparison of likelihoods)
+`raxmlHPC-SSE3 -f e -m PROTGAMMALG -t iqtree.treefile -s subalign -n iqtree_raxml`
 
-_Manually compared Final GAMMA-based score of RAXML trees and IQTREE tree_ 
+_Compare Final GAMMA-based score of RAXML trees and IQTREE tree_ 
 
-6\. for the best tre (RAxML maximum parsimony starting tree) ran and applied bootstraps
+7\. For the best tree (in our case this was the RAxML maximum parsimony starting tree) run and apply bootstraps
 
 `raxmlHPC -m PROTGAMMALG -s subalign -p 12345 -x 12345 -# 100 -n raxml_mp_best `
 
-`raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxMLwithGaps_mp -z RAxML_bootstrap.raxml_mp_best -n T15`
+`raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxml_mp -z RAxML_bootstrap.raxml_mp_best -n T15`
 
-[DOES IT MAKE SENSE TO REPORT THE PREVIOUS STEPS SINCE THEY WERE ALL REDONE?  I WOULD JUST MOVE nogaps.py to #4 AND adjust filenames if necessary]
-7\. Removed sequences with 5 or more gaps using custom script
-./nogaps.py all_hox_plus.fa
+8\. Run Bayesian tree
 
-_Manually added back in sequences cloned from Cassiopea xamachana to file all_hox_plus.fa_wholeSeqs and called this file final_all_hox_plus.fa_
+`fasta2phy.pl subalign > sub.phy
+phy2bayesnex.pl sub.phy > hox.nex`
 
-ML tree
-iqtree-omp -s final_all_hox_plus.fa -nt AUTO -bb 1000 -m LG -pre IQtree_init > iq.out 2> iq.err
+_Paste the following execution block into hox.nex:_
+`mcmcp ngen=10000000 samplefreq=10000 mcmcdiagn=yes stoprule=yes stopval=0.01       nruns=2 nchains=5 savebrlens=yes; mcmc; sumt filename=FILE.nex nRuns=2 Relburnin=YES BurninFrac=.25 Contype=Allcompat;).`
 
-Prune non-Hox/ParaHox genes using custom script
-./make_subalignment2 --tree=IQtree_init.treefile --aln=final_all_hox_plus.fa --root=Alatina_alata_53079 --pre=Nvec
+`mpirun -np 25 mb hox.nex`
 
-RAXML with 25 starting parsimony trees
-raxmlHPC-PTHREADS-SSE3 -T AUTO -p 1234 -# 25 -m PROTGAMMALG -s ../02-SUBALIGN/subalign -n raxMLnoGaps_mp
+_Run ML trees to calculate final GAMMA-based score for Bayesian trees_
 
-RAXML with 25 random starting trees
-raxmlHPC-PTHREADS-SSE3 -T AUTO -d -p 1234 -# 25 -m PROTGAMMALG -s ../02-SUBALIGN/subalign -n raxMLnoGaps_rt
-
-IQTREE
-iqtree -m LG+G4 -s subalign -pre IQtree_noGaps -bb 1000
-raxmlHPC-SSE3 -f e -m PROTGAMMALG -t IQtree_noGaps.treefile -s subalign -n iqtree_raxml
-
-Manually compared Final GAMMA-based score of RAXML trees and IQTREE tree, for the best tree (maximum parsimony starting tree) ran and applied bootstraps
-raxmlHPC -m PROTGAMMALG -s subalign -p 12345 -x 12345 -# 100 -n nogaps_bootstraps
-
-raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxMLnoGaps_mp -z RAxML_bootstrap.nogaps_bootstraps -n T15
-
-
-Bayesian tree
-fasta2phy.pl subalign > sub.phy
-phy2bayesnex.pl sub.phy > hox.nex
-
-paste execution block into hox.nex
-execution block:
-mcmcp ngen=10000000 samplefreq=10000 mcmcdiagn=yes stoprule=yes stopval=0.01       nruns=2 nchains=5 savebrlens=yes; mcmc; sumt filename=FILE.nex nRuns=2 Relburnin=YES BurninFrac=.25 Contype=Allcompat;).
-
-mpirun -np 25 mb hox.nex
-
-
-raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.run1.newick -s ../subalign -n bayes_run1_raxml
+`raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.run1.newick -s ../subalign -n bayes_run1_raxml
 
 raxmlHPC-SSE3 -f e -m PROTGAMMALG -t 03_hox.nex.run2.newick -s ../subalign -n bayes_run2_raxml
 
-raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.con.newick -s ../subalign -n bayes_con_raxml
+raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.con.newick -s ../subalign -n bayes_con_raxml`
 
-Manually compare final GAMMA-based score to RAxML trees
+_Compare final GAMMA-based score to RAxML trees and select best tree for main figure`
 
 
 AU Test
