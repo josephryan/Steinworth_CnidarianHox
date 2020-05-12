@@ -46,13 +46,13 @@ _Compare Final GAMMA-based score of RAXML trees and IQTREE tree_
 
 7\. For the best tree (in our case this was the RAxML maximum parsimony starting tree) run and apply bootstraps
 
- `raxmlHPC -m PROTGAMMALG -s subalign -p 12345 -x 12345 -# 100 -n raxml_mp_best
-  raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxml_mp -z RAxML_bootstrap.raxml_mp_best -n T15`
+ `raxmlHPC -m PROTGAMMALG -s subalign -p 12345 -x 12345 -# 100 -n raxml_mp_best`
+ `raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxml_mp -z RAxML_bootstrap.raxml_mp_best -n T15`
 
 8\. Run Bayesian tree
 
-`fasta2phy.pl subalign > sub.phy
-phy2bayesnex.pl sub.phy > hox.nex`
+`fasta2phy.pl subalign > sub.phy`
+`phy2bayesnex.pl sub.phy > hox.nex`
 
 _Paste the following execution block into hox.nex:_
 `mcmcp ngen=10000000 samplefreq=10000 mcmcdiagn=yes stoprule=yes stopval=0.01       nruns=2 nchains=5 savebrlens=yes; mcmc; sumt filename=FILE.nex nRuns=2 Relburnin=YES BurninFrac=.25 Contype=Allcompat;).`
@@ -61,11 +61,9 @@ _Paste the following execution block into hox.nex:_
 
 _Run ML trees to calculate final GAMMA-based score for Bayesian trees_
 
-`raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.run1.newick -s ../subalign -n bayes_run1_raxml
-
-raxmlHPC-SSE3 -f e -m PROTGAMMALG -t 03_hox.nex.run2.newick -s ../subalign -n bayes_run2_raxml
-
-raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.con.newick -s ../subalign -n bayes_con_raxml`
+`raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.run1.newick -s ../subalign -n bayes_run1_raxml`
+`raxmlHPC-SSE3 -f e -m PROTGAMMALG -t 03_hox.nex.run2.newick -s ../subalign -n bayes_run2_raxml`
+`raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.con.newick -s ../subalign -n bayes_con_raxml`
 
 _Compare final GAMMA-based score to RAxML trees and select best tree for main figure_
 
@@ -87,9 +85,8 @@ _It also creates 4 additional constraint trees:
 
 _It also prints out iqtree command lines to STDOUT which we directed to_ `iq_script.sh`
 
- `cat *.treefile > autest.treels
-
-  iqtree -s subalign -m LG+G4 -z autest.treels -n 0 -zb 1000 -au`
+ `cat *.treefile > autest.treels`
+ `iqtree -s subalign -m LG+G4 -z autest.treels -n 0 -zb 1000 -au`
 
 Removing duplicate sequences from final tree
 java -jar /usr/local/phyutility/phyutility.jar -pr -in TREENAME -out TREENAME.pruned -names NAME1 NAME2 NAME3
