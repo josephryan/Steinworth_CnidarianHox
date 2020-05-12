@@ -46,9 +46,8 @@ _Compare Final GAMMA-based score of RAXML trees and IQTREE tree_
 
 7\. For the best tree (in our case this was the RAxML maximum parsimony starting tree) run and apply bootstraps
 
- `raxmlHPC -m PROTGAMMALG -s subalign -p 12345 -x 12345 -# 100 -n raxml_mp_best 
-
- raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxml_mp -z RAxML_bootstrap.raxml_mp_best -n T15`
+ `raxmlHPC -m PROTGAMMALG -s subalign -p 12345 -x 12345 -# 100 -n raxml_mp_best
+  raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxml_mp -z RAxML_bootstrap.raxml_mp_best -n T15`
 
 8\. Run Bayesian tree
 
@@ -71,25 +70,26 @@ raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.con.newick -s ../subalign -n bayes_
 _Compare final GAMMA-based score to RAxML trees and select best tree for main figure_
 
 
-AU Test
-perl make_constraint_trees.pl > iq_script.sh
+9\. Run AU Test
 
-This script creates constraint trees for every paired combo of the following:
+ `perl make_constraint_trees.pl > iq_script.sh`
+
+_This script creates constraint trees for every paired combo of the following:
    1. cnidarian + cnidarian
-   2. cnidarian + bilat
-   3. cnidarian + mixed (mixed = clade like Gbx includes cnid + bilat)
+   _2. cnidarian + bilat
+   _3. cnidarian + mixed (mixed = clade like Gbx includes cnid + bilat)
 
-It also creates 4 additional constraint trees:
+_It also creates 4 additional constraint trees:
    1. ax6,ax6a,bilat_hox1
-   2. hd065,cdx,xlox
-   3. ax1,ax1a,bilat_post
-   4. ax1,ax1a,bilat_post,cent
+   _2. hd065,cdx,xlox
+   _3. ax1,ax1a,bilat_post
+   _4. ax1,ax1a,bilat_post,cent_
 
-Also prints out iqtree command lines to STDOUT which we directed to iq_script.sh
+_It also prints out iqtree command lines to STDOUT which we directed to_ `iq_script.sh`
 
-cat *.treefile > autest.treels
+ `cat *.treefile > autest.treels
 
-iqtree -s subalign -m LG+G4 -z autest.treels -n 0 -zb 1000 -au
+  iqtree -s subalign -m LG+G4 -z autest.treels -n 0 -zb 1000 -au`
 
 Removing duplicate sequences from final tree
 java -jar /usr/local/phyutility/phyutility.jar -pr -in TREENAME -out TREENAME.pruned -names NAME1 NAME2 NAME3
