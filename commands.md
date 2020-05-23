@@ -3,7 +3,7 @@
 
 requires: `HMMer` (http://hmmer.org/) and `hmm2aln.pl` (https://github.com/josephryan/hmm2aln.pl)
 
- `./hmm2aln.pl --hmm=hd60.hmm --name=HD --fasta_dir=02-RENAMED_DATA --threads=40 --nofillcnf=nofill.hox.conf > cnid_hox_plus.fa`
+ `./hmm2aln.pl --hmm=hd60.hmm --name=HD --fasta_dir=transcriptomes --threads=40 --nofillcnf=nofill.hox.conf > cnid_hox_plus.fa`
 
 _Combine all sequences in cnid_hox_plus.fa with bilaterian and known cnidarian homeoboxes to create file, all_hox_plus.fa_
 
@@ -11,22 +11,22 @@ _Combine all sequences in cnid_hox_plus.fa with bilaterian and known cnidarian h
 
  `./nogaps.py all_hox_plus.fa`
 
-_Add back in sequences cloned from Cassiopea xamachana to file all_hox_plus.fa_wholeSeqs and call this file final_all_hox_plus.fa_
-
 _Remove duplicate sequences_
 
 3\. Generate an initial phylogenetic tree using resulting alignment from `hmm2aln.pl`
 
 requires IQ-tree (http://www.iqtree.org/)
 
- `iqtree-omp -s final_all_hox_plus.fa -nt AUTO -bb 1000 -m LG -pre MLtree_withgaps > iq.out 2> iq.err`
+ `iqtree-omp -s all_hox_plus.fa_wholeSeqs -nt AUTO -bb 1000 -m LG -pre IQTree_Initial > iq.out 2> iq.err`
 
 4\. Using resulting tree and alignment, prune non-Hox/ParaHox genes using make subalignment
-(requires `make_subalignment_fasta` (https://github.com/josephryan/make_subalignment_fasta)
+(requires `make_subalignment2` (https://github.com/josephryan/make_subalignment2)
 
- `./make_subalignment_fasta --tree=MLtree_withgaps.treefile --aln=final_all_hox_plus.fa --root=Anthopleura_elegantissima_45195 --pre=Nvec`
+ `./make_subalignment2 --tree=IQTree_Initial.treefile --aln=all_hox_plus.fa_wholeSeqs --root=C_sowe.0035330 --pre=Nvec > subalign`
 
-5\. Using the resulting alignment from make_subalignment run the following ML trees 
+_Add sequences cloned from Cassiopea xamachana to the subalignment_
+
+5\. Using the resulting alignment from make_subalignment2 run the following ML trees 
 
   a\. RAXML with 25 starting parsimony trees
   
@@ -80,7 +80,7 @@ _This script creates constraint trees for every paired combo of the following:
    _3. cnidarian + mixed (mixed = clade like Gbx includes cnid + bilat)
 
 _It also creates 4 additional constraint trees:
-   1. ax6,ax6a,bilat_hox1
+   _1. ax6,ax6a,bilat_hox1
    _2. hd065,cdx,xlox
    _3. ax1,ax1a,bilat_post
    _4. ax1,ax1a,bilat_post,cent_
@@ -90,11 +90,3 @@ _It also prints out iqtree command lines to STDOUT which we directed to_ `iq_scr
  `cat *.treefile > autest.treels`
  `iqtree -s subalign -m LG+G4 -z autest.treels -n 0 -zb 1000 -au`
 
-Removing duplicate sequences from final tree
-java -jar /usr/local/phyutility/phyutility.jar -pr -in TREENAME -out TREENAME.pruned -names NAME1 NAME2 NAME3
-
-java -jar /usr/local/phyutility/phyutility.jar -pr -in RAxML_bipartitions.T15 -out RAxML_bipartitions.T15.pruned -names Corallium_rubrum_87184, Corallium_rubrum_87185, Corallium_rubrum_17719, Craspedacusta_sowerbyi_16174, Calvadosia_cruxmelitensis_1956, Corallium_rubrum_75060, Haliclystus_sanjuanensis_2068, Craspedacusta_sowerbyi_25502, Craspedacusta_sowerbyi_93900, Corallium_rubrum_89239, Corallium_rubrum_91898, Eunicella_cavolinii_29512, Alatina_alata_18573, Craspedacusta_sowerbyi_43026, Craspedacusta_sowerbyi_85141, Corallium_rubrum_75469, Cxam_transcriptome_73398
-
-java -jar /usr/local/phyutility/phyutility.jar -pr -in RAxML_bipartitions.T15.pruned.renamed -out RAxML_bipartitions.T15.pruned.renamed -names Cxam_transcriptome_40272
-
-^just because I forgot to remove Cxam_transcriptome_40272
