@@ -49,6 +49,7 @@ _Compare Final GAMMA-based score of RAXML trees and IQTREE tree_
 7\. For the best tree (in our case this was the RAxML maximum parsimony starting tree) run and apply bootstraps
 
  `raxmlHPC -m PROTGAMMALG -s subalign -p 12345 -x 12345 -# 100 -n raxml_mp_best`
+ 
  `raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxml_mp -z RAxML_bootstrap.raxml_mp_best -n T15`
 
 8\. Run Bayesian tree
@@ -64,7 +65,9 @@ _Paste the following execution block into hox.nex:_
 _Run ML trees to calculate final GAMMA-based score for Bayesian trees_
 
 `raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.run1.newick -s ../subalign -n bayes_run1_raxml`
+
 `raxmlHPC-SSE3 -f e -m PROTGAMMALG -t 03_hox.nex.run2.newick -s ../subalign -n bayes_run2_raxml`
+
 `raxmlHPC-SSE3 -f e -m PROTGAMMALG -t hox.nex.con.newick -s ../subalign -n bayes_con_raxml`
 
 _Compare final GAMMA-based score to RAxML trees and select best tree for main figure_
@@ -88,5 +91,6 @@ _It also creates 4 additional constraint trees:
 _It also prints out iqtree command lines to STDOUT which we directed to_ `iq_script.sh`
 
  `cat *.treefile > autest.treels`
+ 
  `iqtree -s subalign -m LG+G4 -z autest.treels -n 0 -zb 1000 -au`
 
