@@ -77,18 +77,18 @@ _Compare final GAMMA-based score to RAxML trees and select best tree for main fi
 
  `perl make_constraint_trees.pl > iq_script.sh`
 
-_This script creates constraint trees for every paired combo of the following:
-   1. cnidarian + cnidarian
-   _2. cnidarian + bilat
-   _3. cnidarian + mixed (mixed = clade like Gbx includes cnid + bilat)
+_This script creates constraint trees for every paired combo of the following:_
+   _1. cnidarian + cnidarian_
+   _2. cnidarian + bilat_
+   _3. cnidarian + mixed (mixed = clade like Gbx includes cnid + bilat)_
 
-_It also creates 4 additional constraint trees:
-   _1. ax6,ax6a,bilat_hox1
-   _2. hd065,cdx,xlox
-   _3. ax1,ax1a,bilat_post
+_It also creates 4 additional constraint trees:_
+   _1. ax6,ax6a,bilat_hox1_
+   _2. hd065,cdx,xlox_
+   _3. ax1,ax1a,bilat_post_
    _4. ax1,ax1a,bilat_post,cent_
 
-_It also prints out iqtree command lines to STDOUT which we directed to_ `iq_script.sh`
+_It also prints out iqtree command lines to STDOUT which we directed to_ `iq_script.sh`_
 
  `cat *.treefile > autest.treels`
  
