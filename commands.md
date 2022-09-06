@@ -1,4 +1,4 @@
-# Commands used in Steinworth_et_al_2020-CnidarianHox
+# Commands used in Steinworth-CnidarianHox
 1\. Use  hmm2aln.pl to identify Hox/ParaHox and related homeodomains from translated transcriptomes and protein model files of selected cnidarian datasets.
 
 requires: `HMMer` (http://hmmer.org/) and `hmm2aln.pl` (https://github.com/josephryan/hmm2aln.pl)
