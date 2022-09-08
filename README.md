@@ -1,10 +1,12 @@
-# Steinworth_et_al_2020-CnidarianHox
+# Steinworth_CnidarianHox
 
-Cnidarian Hox phylotocol, alignments, trees, and scripts used in Steinworth et al. (2020).
+Cnidarian Hox phylotocol, alignments, trees, and scripts used in Steinworth et al. (2022).
 
 * 01-ALIGNMENTS - directory with alignments used in this study
 
 * 02-TREES - directory with trees produced in this study
+
+* 03-SCRIPTS - directory with scripts used in this study not available elsewhere
 
 * LICENSE - license for files in this repository
 
