@@ -1,0 +1,377 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=275;
+	taxlabels
+	'A_alat.0001736'[&!color=#98ad81]
+	'A_alat.0005372'[&!color=#98ad81]
+	'A_alat.0015128'[&!color=#98ad81]
+	'A_alat.0019797'[&!color=#98ad81]
+	'A_alat.0026139'[&!color=#98ad81]
+	'A_alat.0031934'[&!color=#98ad81]
+	'Adig.Ax1'[&!color=#e4bf65]
+	'Adig.Ax1a'[&!color=#e4bf65]
+	'Adig.Ax6'[&!color=#e4bf65]
+	'Adig.Ax6a'[&!color=#e4bf65]
+	'Adig.Ax6b'[&!color=#e4bf65]
+	'Adig.Ax7_8'[&!color=#e4bf65]
+	'Adig.EVX'[&!color=#e4bf65]
+	'Adig.GSX'[&!color=#e4bf65]
+	'Adig.HLXB9'[&!color=#e4bf65]
+	'Adig.MOXb'[&!color=#e4bf65]
+	'Adig.MOXc'[&!color=#e4bf65]
+	'Adig.MOXd'[&!color=#e4bf65]
+	'An_eleg.0004632'[&!color=#e4bf65]
+	'An_eleg.0014170'[&!color=#e4bf65]
+	'An_eleg.0027362'[&!color=#e4bf65]
+	'An_eleg.0057126'[&!color=#e4bf65]
+	Bflo_Cdx
+	Bflo_Evxa
+	Bflo_Evxb
+	Bflo_Gbx
+	Bflo_Gsx
+	Bflo_Hox1
+	Bflo_Hox10
+	Bflo_Hox11
+	Bflo_Hox12
+	Bflo_Hox13
+	Bflo_Hox14
+	Bflo_Hox15
+	Bflo_Hox2
+	Bflo_Hox3
+	Bflo_Hox4
+	Bflo_Hox5
+	Bflo_Hox6
+	Bflo_Hox7
+	Bflo_Hox8
+	Bflo_Hox9
+	Bflo_Mnxa
+	Bflo_Mnxb
+	Bflo_Mox
+	Bflo_Xlox
+	'C_amGM.0004605'[&!color=#91735d]
+	'C_amGM.0005376'[&!color=#91735d]
+	'C_amGM.0022387'[&!color=#91735d]
+	'C_amGM.0025009'[&!color=#91735d]
+	'C_amGM.0027763'[&!color=#91735d]
+	'C_crux.0001759'[&!color=#98ad81]
+	'C_crux.0001760'[&!color=#98ad81]
+	'C_crux.0002132'[&!color=#98ad81]
+	'C_sowe.0008338'[&!color=#386cac]
+	'C_sowe.0008339'[&!color=#386cac]
+	'C_sowe.0011497'[&!color=#386cac]
+	'C_sowe.0013429'[&!color=#386cac]
+	'C_sowe.0013430'[&!color=#386cac]
+	'C_sowe.0013443'[&!color=#386cac]
+	'C_sowe.0021572'[&!color=#386cac]
+	'C_sowe.0022888'[&!color=#386cac]
+	'C_sowe.0024308'[&!color=#386cac]
+	'C_sowe.0027404'[&!color=#386cac]
+	'C_sowe.0035845'[&!color=#386cac]
+	'C_sowe.0041089'[&!color=#386cac]
+	'C_sowe.0057563'[&!color=#386cac]
+	Cg_Cdx
+	Cg_Evx1
+	Cg_Evx2
+	Cg_Gbx
+	Cg_Gsx
+	Cg_Hox1
+	Cg_Hox2
+	Cg_Hox3
+	Cg_Hox4
+	Cg_Hrox
+	Cg_Lox2
+	Cg_Lox4
+	Cg_Lox5
+	Cg_Post1
+	Cg_Post2
+	Cg_Xlox
+	Chem_Cdx[&!color=#386cac]
+	Chem_Eve[&!color=#386cac]
+	Chem_Gsx[&!color=#386cac]
+	Chem_Hox1[&!color=#386cac]
+	Chem_Hox9-14A[&!color=#386cac]
+	Chem_Hox9-14B[&!color=#386cac]
+	Chem_Hox9-14C[&!color=#386cac]
+	Chem_Mox[&!color=#386cac]
+	Crub_110316_DN14964_c0_g1[&!color=#c3442c]
+	Crub_114739_DN16012_c0_g1[&!color=#c3442c]
+	Crub_132862_DN21330_c0_g1[&!color=#c3442c]
+	Crub_170258_DN40175_c1_g1[&!color=#c3442c]
+	Crub_171714_DN41499_c0_g1[&!color=#c3442c]
+	Crub_188605_DN59188_c0_g1[&!color=#c3442c]
+	Crub_46203_DN4390_c0_g1[&!color=#c3442c]
+	Crub_62730_DN6598_c0_g2[&!color=#c3442c]
+	Crub_77592_DN8645_c0_g2[&!color=#c3442c]
+	Crub_93968_DN11443_c0_g2[&!color=#c3442c]
+	Ct_Antp
+	Ct_Cdx
+	Ct_Dfd
+	Ct_EvxA
+	Ct_EvxB
+	Ct_Gbx
+	Ct_Gsx
+	Ct_Hox3
+	Ct_Hrox
+	Ct_Lab
+	Ct_Lox2
+	Ct_Lox4
+	Ct_Lox5
+	Ct_Pb
+	Ct_Post1
+	Ct_Post2
+	Ct_Scr
+	Ct_XloxB
+	CxamHS_DN101600_c4_g1_i1[&!color=#98ad81]
+	CxamHS_DN111384_c0_g1_i1[&!color=#98ad81]
+	CxamHS_DN111384_c0_g1_i2[&!color=#98ad81]
+	CxamHS_DN111425_c0_g1_i1[&!color=#98ad81]
+	CxamHS_DN113132_c2_g1_i9[&!color=#98ad81]
+	CxamHS_DN56773_c0_g1_i1[&!color=#98ad81]
+	CxamHS_DN65191_c0_g1_i1[&!color=#98ad81]
+	CxamHS_DN65191_c0_g1_i2[&!color=#98ad81]
+	CxamHS_DN66447_c0_g1_i1[&!color=#98ad81]
+	CxamHS_DN76731c0_g1_i1[&!color=#98ad81]
+	CxamHS_DN85250_c1_g1_i1[&!color=#98ad81]
+	CxamHS_DN95516_c0_g1_i1[&!color=#98ad81]
+	'Cxam_g12558.t1'[&!color=#98ad81]
+	'Cxam_g14028.t1'[&!color=#98ad81]
+	'Cxam_g27826.t1'[&!color=#98ad81]
+	'Cxam_g7042.t1'[&!color=#98ad81]
+	'Cxam_g9676.t1'[&!color=#98ad81]
+	Dmel_AbdB
+	Dmel_Antp
+	Dmel_Dfd
+	Dmel_Scr
+	Dmel_Ubx
+	Dmel_abdA
+	Dmel_btn
+	Dmel_cad
+	Dmel_eve
+	Dmel_exex
+	Dmel_ftz
+	Dmel_ind
+	Dmel_lab
+	Dmel_pb
+	Dmel_unpg
+	Dmel_zen
+	Dmel_zen2
+	'E_cavo.0008160'[&!color=#c3442c]
+	'E_cavo.0012101'[&!color=#c3442c]
+	'E_cavo.0029423'[&!color=#c3442c]
+	Edic_Cnox1[&!color=#386cac]
+	Edic_Cnox3[&!color=#386cac]
+	Edic_Cnox4[&!color=#386cac]
+	Edic_Cnox5[&!color=#386cac]
+	'H_sanj.0014066'[&!color=#98ad81]
+	Hsap_CDX1
+	Hsap_CDX2
+	Hsap_CDX4
+	Hsap_EVX1
+	Hsap_EVX2
+	Hsap_GBX1
+	Hsap_GBX2
+	Hsap_GSX1
+	Hsap_GSX2
+	Hsap_HOXA1
+	Hsap_HOXA10
+	Hsap_HOXA11
+	Hsap_HOXA13
+	Hsap_HOXA2
+	Hsap_HOXA3
+	Hsap_HOXA4
+	Hsap_HOXA5
+	Hsap_HOXA6
+	Hsap_HOXA7
+	Hsap_HOXA9
+	Hsap_HOXB1
+	Hsap_HOXB13
+	Hsap_HOXB2
+	Hsap_HOXB3
+	Hsap_HOXB4
+	Hsap_HOXB5
+	Hsap_HOXB6
+	Hsap_HOXB7
+	Hsap_HOXB8
+	Hsap_HOXB9
+	Hsap_HOXC10
+	Hsap_HOXC11
+	Hsap_HOXC12
+	Hsap_HOXC13
+	Hsap_HOXC4
+	Hsap_HOXC5
+	Hsap_HOXC6
+	Hsap_HOXC8
+	Hsap_HOXC9
+	Hsap_HOXD1
+	Hsap_HOXD10
+	Hsap_HOXD11
+	Hsap_HOXD12
+	Hsap_HOXD13
+	Hsap_HOXD3
+	Hsap_HOXD4
+	Hsap_HOXD8
+	Hsap_HOXD9
+	Hsap_MEOX1
+	Hsap_MEOX2
+	Hsap_MNX1
+	Hsap_PDX1
+	Hvul_Cnox1[&!color=#386cac]
+	Hvul_Gsx[&!color=#386cac]
+	Hvul_Hoxa[&!color=#386cac]
+	Hvul_Hoxb[&!color=#386cac]
+	Hvul_Hoxc2[&!color=#386cac]
+	Hvul_Hoxc3[&!color=#386cac]
+	Hvul_Hoxd[&!color=#386cac]
+	Hvul_Mox[&!color=#386cac]
+	'L_scut.0004637'[&!color=#e4bf65]
+	'L_scut.0011489'[&!color=#e4bf65]
+	'L_scut.0039337'[&!color=#e4bf65]
+	'L_scut.0048379'[&!color=#e4bf65]
+	Nvec_Evx[&!color=#e4bf65]
+	Nvec_Gbx[&!color=#e4bf65]
+	Nvec_Gsx[&!color=#e4bf65]
+	Nvec_HD065[&!color=#e4bf65]
+	Nvec_HlxB9[&!color=#e4bf65]
+	Nvec_MoxA[&!color=#e4bf65]
+	Nvec_MoxB[&!color=#e4bf65]
+	Nvec_MoxC[&!color=#e4bf65]
+	Nvec_MoxD[&!color=#e4bf65]
+	Nvec_Ro[&!color=#e4bf65]
+	Nvec_anthox1[&!color=#e4bf65]
+	Nvec_anthox1a[&!color=#e4bf65]
+	Nvec_anthox6[&!color=#e4bf65]
+	Nvec_anthox6a[&!color=#e4bf65]
+	Nvec_anthox7[&!color=#e4bf65]
+	Nvec_anthox8a[&!color=#e4bf65]
+	Nvec_anthox8b[&!color=#e4bf65]
+	Nvec_anthox9[&!color=#e4bf65]
+	Pcar_Cnox1-Pc[&!color=#386cac]
+	Pcar_Cnox2-Pc[&!color=#386cac]
+	Pcar_Cnox4-Pc[&!color=#386cac]
+	Pcar_Gsx[&!color=#386cac]
+	'Renill.0002623'[&!color=#c3442c]
+	'Renill.0023049'[&!color=#c3442c]
+	'Renill.0031833'[&!color=#c3442c]
+	'Renill.0035902'[&!color=#c3442c]
+	'Renill.0038697'[&!color=#c3442c]
+	'Rren_g15404.t1'[&!color=#c3442c]
+	'Rren_g19852.t1'[&!color=#c3442c]
+	'Rren_g2038.t1'[&!color=#c3442c]
+	'Rren_g5113.t1'[&!color=#c3442c]
+	'Rren_g689.t1'[&!color=#c3442c]
+	'Rren_g691.t1'[&!color=#c3442c]
+	Tcas_AbdB[&!color=#000000]
+	Tcas_Btn[&!color=#000000]
+	Tcas_Cad2[&!color=#000000]
+	Tcas_Cx[&!color=#000000]
+	Tcas_Dfd[&!color=#000000]
+	Tcas_Eve[&!color=#000000]
+	Tcas_Exex[&!color=#000000]
+	Tcas_Ind[&!color=#000000]
+	Tcas_Unpg[&!color=#000000]
+	Tcas_Utx[&!color=#000000]
+	Tcas_abdA[&!color=#000000]
+	Tcas_ftz[&!color=#000000]
+	Tcas_lab[&!color=#000000]
+	Tcas_mxp[&!color=#000000]
+	Tcas_ptl[&!color=#000000]
+	Tcas_zen1[&!color=#000000]
+	Tcas_zen2[&!color=#000000]
+;
+end;
+
+begin trees;
+	tree tree_1 = [&R] ((Cg_Hox3:0.050959,((Tcas_zen2:0.101485,Tcas_zen1:0.147253)[&label=85]:0.216308,Bflo_Hox3:0.026879)[&label=31]:0.027734)[&label=28]:0.034404,(((((Nvec_anthox7:0.33506,('Adig.Ax7_8':0.161923,('An_eleg.0004632':0.296219,(Nvec_anthox8a:1.0E-6,Nvec_anthox8b:1.0E-6)[&label=90]:1.0E-6)[&label=41]:0.034355)[&label=21]:1.0E-6)[&label=77]:0.310987,(('Renill.0023049':0.069553,Crub_114739_DN16012_c0_g1:0.03092)[&label=100]:0.295873,(Ct_Pb:1.0E-6,(((Dmel_pb:1.0E-6,Tcas_mxp:1.0E-6)[&label=84]:1.0E-6,(Bflo_Hox2:0.445797,(Hsap_HOXA2:1.0E-6,Hsap_HOXB2:0.022309)[&label=76]:1.0E-6)[&label=47]:0.074755)[&label=36]:0.025581,Cg_Hox2:1.0E-6)[&label=31]:0.025777)[&label=59,!collapse={"collapsed",0.0},!name="Hox2"]:0.27005)[&label=26]:0.08762)[&label=10]:0.063335,(((Dmel_zen:0.386367,Dmel_zen2:0.199953)[&label=80]:0.312315,(((CxamHS_DN95516_c0_g1_i1:0.253965,('C_sowe.0008338':0.094637,((Edic_Cnox4:0.117433,Chem_Cdx:0.074099)[&label=64]:0.108819,'C_sowe.0008339':1.0E-6)[&label=18]:0.020085)[&label=48]:0.055069)[&label=99]:1.008424,(CxamHS_DN56773_c0_g1_i1:1.0E-6,((Pcar_Cnox2-Pc:0.139574,'C_sowe.0011497':0.126808)[&label=59]:0.076965,'Cxam_g27826.t1':0.024958)[&label=42]:0.027265)[&label=68]:0.148698)[&label=6]:0.228477,((Nvec_anthox9:1.211898,(('C_amGM.0004605':1.0E-6,((((((Chem_Gsx:1.0E-6,CxamHS_DN66447_c0_g1_i1:1.0E-6)[&label=38]:1.0E-6,('C_sowe.0022888':0.043216,Hvul_Gsx:0.021741)[&label=7]:1.0E-6)[&label=14]:1.0E-6,Pcar_Gsx:0.021411)[&label=63]:0.021543,'A_alat.0019797':1.0E-6)[&label=41]:0.022029,('Rren_g5113.t1':1.0E-6,('E_cavo.0012101':0.021973,Crub_171714_DN41499_c0_g1:1.0E-6)[&label=59]:0.02171)[&label=88]:0.043291)[&label=13]:0.021716,('An_eleg.0014170':1.0E-6,('Adig.GSX':1.0E-6,Nvec_Gsx:1.0E-6)[&label=91]:1.0E-6)[&label=93]:0.045335)[&label=14]:0.019993)[&label=46]:0.202565,(Cg_Gsx:1.0E-6,(((Hsap_GSX2:0.044439,(Bflo_Gsx:0.085678,Hsap_GSX1:1.0E-6)[&label=24]:1.0E-6)[&label=18]:0.023711,Ct_Gsx:0.05328)[&label=38]:0.024895,(Dmel_ind:0.219037,Tcas_Ind:0.031636)[&label=35]:0.0607)[&label=23]:0.034564)[&label=75,!collapse={"collapsed",0.0},!name="Bilaterian Gsx"]:0.181671)[&label=64]:0.195184)[&label=5]:0.12417,(('C_amGM.0027763':0.35371,('Cxam_g9676.t1':1.0E-6,CxamHS_DN113132_c2_g1_i9:1.0E-6)[&label=100]:1.31204)[&label=22]:0.191687,((((Dmel_lab:0.134966,(((Hsap_HOXA1:1.0E-6,(Hsap_HOXD1:0.210287,Hsap_HOXB1:0.144739)[&label=45]:0.032309)[&label=52]:0.074451,Bflo_Hox1:0.067689)[&label=29]:0.093142,(Cg_Hox1:1.0E-6,Ct_Lab:0.027235)[&label=60]:0.030278)[&label=12]:0.038701)[&label=6]:1.0E-6,Tcas_lab:0.03782)[&label=96,!collapse={"collapsed",0.0},!name="Hox1"]:0.389608,(((('Rren_g689.t1':0.048785,Crub_62730_DN6598_c0_g2:1.0E-6)[&label=97]:0.101065,'C_amGM.0022387':0.266251)[&label=84]:0.168914,(Nvec_anthox6:0.116587,'Adig.Ax6':0.042138)[&label=66]:0.082857)[&label=51]:0.052189,('C_crux.0002132':0.065504,((Edic_Cnox5:0.180648,(Pcar_Cnox1-Pc:0.061276,Chem_Hox1:0.133829)[&label=72]:0.058231)[&label=38]:0.041136,(Hvul_Hoxa:0.906932,(CxamHS_DN65191_c0_g1_i1:1.0E-6,CxamHS_DN65191_c0_g1_i2:1.0E-6)[&label=100]:1.0E-6)[&label=16]:0.091224)[&label=31]:0.067405)[&label=59]:0.257062)[&label=55]:0.098362)[&label=31]:0.260203,(((('Rren_g19852.t1':0.06861,Crub_170258_DN40175_c1_g1:1.0E-6)[&label=53]:1.0E-6,Nvec_Ro:0.100414)[&label=100]:0.521225,((Nvec_Gbx:0.119447,'An_eleg.0027362':0.035449)[&label=97]:0.114194,(((Dmel_unpg:1.0E-6,(Tcas_Unpg:0.059,((Bflo_Gbx:1.0E-6,(Ct_Gbx:0.033614,Cg_Gbx:0.045948)[&label=59]:0.018702)[&label=53]:0.036893,(Hsap_GBX2:0.022564,Hsap_GBX1:0.023016)[&label=73]:0.010875)[&label=53]:0.073775)[&label=35]:0.033121)[&label=42,!collapse={"collapsed",0.0},!name="Bilaterian Gbx"]:0.111352,('Rren_g2038.t1':0.086661,Crub_46203_DN4390_c0_g1:1.0E-6)[&label=97]:0.110749)[&label=35]:0.055149,'L_scut.0004637':0.037264)[&label=13]:1.0E-6)[&label=99]:0.358001)[&label=23]:0.061162,((Tcas_Exex:1.0E-6,(((Bflo_Mnxa:0.044115,Bflo_Mnxb:1.0E-6)[&label=90]:0.043371,((('Adig.HLXB9':0.138218,('An_eleg.0057126':0.022337,Nvec_HlxB9:1.0E-6)[&label=97]:0.013453)[&label=97]:0.223675,(CxamHS_DN111384_c0_g1_i1:1.0E-6,CxamHS_DN111384_c0_g1_i2:1.0E-6)[&label=100]:1.358608)[&label=39]:0.142105,Hsap_MNX1:0.048039)[&label=24]:0.051413)[&label=9]:1.0E-6,Dmel_exex:0.067537)[&label=18]:0.02085)[&label=48]:0.250043,((Bflo_Evxb:0.053334,((('Adig.EVX':0.09526,Nvec_Evx:0.053335)[&label=85]:0.277859,(Bflo_Evxa:1.0E-6,(((CxamHS_DN101600_c4_g1_i1:0.00397,(Chem_Eve:0.097516,('C_sowe.0013429':1.0E-6,'C_sowe.0013430':1.0E-6)[&label=100]:0.084952)[&label=81]:0.165237)[&label=90]:0.462934,Tcas_Eve:1.0E-6)[&label=16]:0.090779,(Dmel_eve:0.023717,(Cg_Evx2:0.126235,(Cg_Evx1:0.113277,(Ct_EvxB:1.0E-6,Ct_EvxA:1.0E-6)[&label=98]:0.05489)[&label=37]:0.029064)[&label=8]:1.0E-6)[&label=19]:0.042622)[&label=28]:0.035213)[&label=19]:0.023055)[&label=19]:0.025364,(Hsap_EVX1:0.024677,Hsap_EVX2:1.0E-6)[&label=63]:1.0E-6)[&label=47]:0.095779)[&label=98]:0.798928,(('C_sowe.0027404':0.105697,(Chem_Mox:0.022352,(Hvul_Mox:0.140261,'C_sowe.0041089':0.024444)[&label=27]:0.021357)[&label=32]:0.016217)[&label=30]:0.044762,((('H_sanj.0014066':0.044595,('C_crux.0001760':1.0E-6,'C_crux.0001759':1.0E-6)[&label=87]:0.022501)[&label=45]:0.019386,((((Hsap_MEOX2:1.0E-6,Hsap_MEOX1:0.072185)[&label=67]:0.071854,(Bflo_Mox:0.090273,(Dmel_btn:0.344812,Tcas_Btn:1.0E-6)[&label=52]:0.131376)[&label=9]:0.032503)[&label=24]:0.017719,(Ct_Hrox:0.090676,Cg_Hrox:1.0E-6)[&label=56]:0.093006)[&label=37,!collapse={"collapsed",0.0},!name="Bilaterian Mox"]:0.108427,((((Nvec_MoxD:0.178646,('Adig.MOXd':0.109936,'L_scut.0039337':1.0E-6)[&label=91]:0.099798)[&label=70]:0.159593,('C_amGM.0005376':1.0E-6,((Nvec_MoxB:1.0E-6,'Adig.MOXb':0.044825)[&label=67]:0.022381,(Crub_77592_DN8645_c0_g2:1.0E-6,'Renill.0031833':1.0E-6)[&label=71]:4.84E-4)[&label=31]:0.021615)[&label=25]:0.03148)[&label=7]:0.00939,(Nvec_MoxC:0.028534,'Adig.MOXc':0.091153)[&label=57]:0.02302)[&label=15]:0.025852,Nvec_MoxA:0.023798)[&label=18]:0.069369)[&label=4]:0.056171)[&label=0]:1.0E-6,'Cxam_g12558.t1':0.066789)[&label=1]:0.016737)[&label=86]:0.355404)[&label=17]:0.205943)[&label=4]:1.0E-6)[&label=17]:0.181217)[&label=0]:0.073223)[&label=0]:0.091499)[&label=0]:1.0E-6)[&label=0]:0.039218)[&label=0]:0.058787,((((Cg_Xlox:1.0E-6,(Bflo_Xlox:1.0E-6,Hsap_PDX1:0.12636)[&label=39]:0.028679)[&label=70]:0.127119,((Nvec_HD065:0.496618,(CxamHS_DN111425_c0_g1_i1:0.035305,('C_sowe.0013443':0.144359,'C_sowe.0021572':1.0E-6)[&label=95]:0.112078)[&label=94]:0.202296)[&label=59]:0.273888,Ct_XloxB:0.087813)[&label=10]:1.0E-6)[&label=44]:0.152349,((((('Adig.Ax1':1.0E-6,((Crub_110316_DN14964_c0_g1:1.0E-6,('Rren_g15404.t1':1.0E-6,'Renill.0002623':0.022496)[&label=58]:0.022506)[&label=82]:0.127532,Nvec_anthox1:0.022366)[&label=38]:0.025297)[&label=38]:0.018288,'L_scut.0011489':0.029283)[&label=52]:0.154894,(('A_alat.0005372':1.0E-6,('Cxam_g14028.t1':0.143637,((Hvul_Hoxc3:0.053931,(Hvul_Cnox1:0.290102,Hvul_Hoxc2:0.065289)[&label=18]:1.0E-6)[&label=63]:0.049042,(Chem_Hox9-14C:0.173193,Edic_Cnox1:0.070547)[&label=58]:0.062075)[&label=24]:0.03795)[&label=15]:0.068804)[&label=78]:0.314482,(CxamHS_DN85250_c1_g1_i1:0.103046,(((Chem_Hox9-14B:0.658108,('A_alat.0026139':1.0E-6,'A_alat.0031934':0.435401)[&label=87]:0.201322)[&label=82]:0.137379,Pcar_Cnox4-Pc:0.321823)[&label=66]:0.184037,Hvul_Hoxb:0.603883)[&label=44]:1.0E-6)[&label=67]:0.226122)[&label=7]:1.0E-6)[&label=31]:0.066933,(((Nvec_anthox1a:0.103753,('L_scut.0048379':0.052737,'Adig.Ax1a':0.04415)[&label=91]:0.178079)[&label=55]:0.104973,(((CxamHS_DN76731c0_g1_i1:1.0E-6,'Cxam_g7042.t1':1.0E-6)[&label=99]:0.169959,('A_alat.0001736':0.212039,'C_sowe.0057563':0.345178)[&label=30]:0.096879)[&label=44]:0.390829,((Hsap_CDX1:1.0E-6,((Hsap_CDX2:0.026978,(((Ct_Cdx:0.449208,Dmel_cad:0.128575)[&label=53]:0.070857,Cg_Cdx:0.060111)[&label=9]:1.0E-6,Tcas_Cad2:0.141067)[&label=20]:0.059649)[&label=4]:0.032139,(Bflo_Cdx:0.354254,Hsap_CDX4:0.084903)[&label=42]:0.118354)[&label=20]:0.04095)[&label=100,!collapse={"collapsed",0.0},!name="Bilaterian Cdx"]:1.049395,('Renill.0035902':0.035424,('E_cavo.0029423':0.02331,Crub_132862_DN21330_c0_g1:0.023389)[&label=49]:0.009417)[&label=79]:1.0E-6)[&label=20]:0.173601)[&label=1]:0.047502)[&label=9]:0.076123,(Crub_188605_DN59188_c0_g1:0.026941,'Renill.0038697':0.185646)[&label=93]:0.283525)[&label=3]:0.039669)[&label=1]:0.087839,((Chem_Hox9-14A:0.198218,Edic_Cnox3:0.216646)[&label=39]:0.072246,(('A_alat.0015128':0.302548,Hvul_Hoxd:0.869561)[&label=28]:0.195912,('C_sowe.0024308':0.035676,'C_sowe.0035845':0.030995)[&label=41]:0.084411)[&label=10]:0.016778)[&label=67]:0.514124)[&label=1]:0.076644)[&label=1]:0.051758,(Bflo_Hox4:1.0E-6,((Hsap_HOXC4:1.0E-6,Hsap_HOXB4:0.047619)[&label=70]:0.023985,(((((Bflo_Hox5:1.0E-6,((((Cg_Lox5:0.055271,(Dmel_ftz:0.159318,Tcas_ftz:0.157178)[&label=54]:0.070788)[&label=20]:0.027307,Ct_Lox5:0.084314)[&label=14]:0.032891,(((((((Bflo_Hox8:0.068888,((((Hsap_HOXB9:0.054811,(Hsap_HOXA9:0.047594,(Hsap_HOXD9:0.035025,Hsap_HOXC9:0.010141)[&label=63]:0.019601)[&label=42]:0.012252)[&label=75]:0.095683,((((((Hsap_HOXD11:1.0E-6,(Hsap_HOXC11:0.073129,Hsap_HOXA11:0.048456)[&label=45]:0.020848)[&label=88]:0.327409,(Bflo_Hox13:0.137353,(((Bflo_Hox15:0.480608,(Hsap_HOXD13:0.124511,((Hsap_HOXA13:1.0E-6,Hsap_HOXB13:0.297225)[&label=41]:0.027117,Hsap_HOXC13:0.091001)[&label=57]:0.071001)[&label=96]:0.370753)[&label=88]:0.373033,(Hsap_HOXD12:0.167465,Hsap_HOXC12:0.148236)[&label=96]:0.397007)[&label=25]:0.367839,(Bflo_Hox14:0.14433,(Cg_Post1:0.377397,Ct_Post1:0.780967)[&label=74]:0.520185)[&label=28]:0.134689)[&label=1]:0.137329)[&label=21]:0.30784)[&label=6]:0.29422,Bflo_Hox10:0.02256)[&label=0]:0.057522,(Bflo_Hox12:0.223914,Bflo_Hox11:0.073172)[&label=42]:0.07807)[&label=3]:0.062387,(Hsap_HOXA10:0.024491,(Hsap_HOXD10:0.023593,Hsap_HOXC10:0.046422)[&label=74]:0.020878)[&label=91]:0.10335)[&label=4]:0.059824,Bflo_Hox9:0.112397)[&label=0]:0.036215)[&label=2]:0.151275,((Cg_Post2:0.109505,Ct_Post2:1.0E-6)[&label=97]:0.608275,(Tcas_AbdB:1.0E-6,Dmel_AbdB:0.022508)[&label=99]:0.346156)[&label=14]:0.191652)[&label=77]:0.608656,(Hsap_HOXC8:0.025457,(Hsap_HOXD8:0.050601,Hsap_HOXB8:1.0E-6)[&label=13]:1.0E-6)[&label=96]:0.017608)[&label=4]:0.152748)[&label=1]:0.047757,Bflo_Hox6:0.077713)[&label=0]:0.029786,Bflo_Hox7:1.0E-6)[&label=0]:0.024126,Hsap_HOXB7:0.050394)[&label=0]:1.0E-6,(Dmel_Antp:1.0E-6,Tcas_ptl:1.0E-6)[&label=38]:1.0E-6)[&label=0]:1.0E-6,((Hsap_HOXB6:0.046824,Hsap_HOXA6:0.028586)[&label=43]:0.026174,(((Cg_Lox2:0.025018,Ct_Lox2:1.0E-6)[&label=97]:0.161541,((Ct_Lox4:1.0E-6,Cg_Lox4:0.050433)[&label=79]:0.078154,((Tcas_Utx:1.0E-6,Dmel_Ubx:1.0E-6)[&label=98]:0.068942,(Tcas_abdA:1.0E-6,Dmel_abdA:1.0E-6)[&label=92]:0.035753)[&label=60]:1.0E-6)[&label=47]:0.083475)[&label=16]:1.0E-6,Hsap_HOXC6:0.097489)[&label=5]:1.0E-6)[&label=3]:0.027517)[&label=0]:1.0E-6,(Hsap_HOXA7:0.02442,Ct_Antp:1.0E-6)[&label=29]:1.0E-6)[&label=1]:0.048494)[&label=1]:0.06765,(Ct_Scr:0.087073,(Tcas_Cx:1.0E-6,Dmel_Scr:1.0E-6)[&label=90]:0.065653)[&label=6]:0.007901)[&label=0]:0.030089)[&label=1]:0.071813,((Hsap_HOXB5:1.0E-6,Hsap_HOXA5:1.0E-6)[&label=94]:0.015667,Hsap_HOXC5:0.165493)[&label=38]:0.020514)[&label=2]:0.112226,(Cg_Hox4:0.026505,Ct_Dfd:1.0E-6)[&label=53]:0.029122)[&label=1]:1.0E-6,(Dmel_Dfd:1.0E-6,Tcas_Dfd:1.0E-6)[&label=98]:0.076441)[&label=0]:0.093726,(Hsap_HOXA4:0.023331,Hsap_HOXD4:1.0E-6)[&label=77]:1.0E-6)[&label=0]:0.02275)[&label=2]:0.107652)[&label=2,!collapse={"collapsed",0.0},!name="Bilaterian Central and Posterior Hox Genes"]:0.146047)[&label=5]:0.064728)[&label=3]:0.033053)[&label=4]:0.022126,(('Rren_g691.t1':0.055722,(Crub_93968_DN11443_c0_g2:0.071251,'E_cavo.0008160':0.061131)[&label=55]:0.033576)[&label=77]:0.17813,(Nvec_anthox6a:1.0E-6,('C_amGM.0025009':0.298834,('Adig.Ax6a':0.0479,'Adig.Ax6b':0.16473)[&label=29]:1.0E-6)[&label=34]:0.049628)[&label=43]:0.082505)[&label=58]:0.317223)[&label=57,!name="Hox3",!collapse={"collapsed",0.0}]:0.219691,(Hsap_HOXA3:1.0E-6,(Hsap_HOXB3:0.022028,Hsap_HOXD3:0.022022)[&label=7]:1.0E-6)[&label=74]:0.045257)[&label=16]:0.016195,Ct_Hox3:1.0E-6);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="Default";
+	set appearance.backgroundColour=#ffffff;
+	set appearance.branchColorAttribute="User selection";
+	set appearance.branchColorGradient=false;
+	set appearance.branchLineWidth=1.0;
+	set appearance.branchMinLineWidth=0.0;
+	set appearance.branchWidthAttribute="Fixed";
+	set appearance.foregroundColour=#000000;
+	set appearance.hilightingGradient=false;
+	set appearance.selectionColour=#2d3680;
+	set branchLabels.colorAttribute="User selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName="Arial";
+	set branchLabels.fontSize=12;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=287;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set legend.attribute="label";
+	set legend.fontSize=10.0;
+	set legend.isShown=false;
+	set legend.significantDigits=4;
+	set nodeBars.barWidth=4.0;
+	set nodeBars.displayAttribute=null;
+	set nodeBars.isShown=false;
+	set nodeLabels.colorAttribute="User selection";
+	set nodeLabels.displayAttribute="label";
+	set nodeLabels.fontName="Arial";
+	set nodeLabels.fontSize=12;
+	set nodeLabels.fontStyle=0;
+	set nodeLabels.isShown=true;
+	set nodeLabels.significantDigits=4;
+	set nodeShapeExternal.colourAttribute="User selection";
+	set nodeShapeExternal.isShown=false;
+	set nodeShapeExternal.minSize=10.0;
+	set nodeShapeExternal.scaleType=Width;
+	set nodeShapeExternal.shapeType=Circle;
+	set nodeShapeExternal.size=4.0;
+	set nodeShapeExternal.sizeAttribute="Fixed";
+	set nodeShapeInternal.colourAttribute="User selection";
+	set nodeShapeInternal.isShown=false;
+	set nodeShapeInternal.minSize=10.0;
+	set nodeShapeInternal.scaleType=Width;
+	set nodeShapeInternal.shapeType=Circle;
+	set nodeShapeInternal.size=4.0;
+	set nodeShapeInternal.sizeAttribute="Fixed";
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.minorTicks=0.5;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=14.0;
+	set scaleBar.isShown=false;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=5.0;
+	set tipLabels.colorAttribute="User selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName="Arial";
+	set tipLabels.fontSize=12;
+	set tipLabels.fontStyle=0;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=true;
+	set trees.orderType="increasing";
+	set trees.rooting=true;
+	set trees.rootingType="User Selection";
+	set trees.transform=true;
+	set trees.transformType="cladogram";
+end;
+
