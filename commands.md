@@ -20,7 +20,7 @@ requires IQ-tree (http://www.iqtree.org/)
  `iqtree-omp -s all_hox_plus.fa_wholeSeqs -nt AUTO -bb 1000 -m LG -pre IQTree_Initial > iq.out 2> iq.err`
 
 4\. Using resulting tree and alignment, prune non-Hox/ParaHox genes using make subalignment
-(requires `make_subalignment2` (https://github.com/josephryan/make_subalignment2)
+(requires `make_subalignment2` https://github.com/josephryan/Steinworth_CnidarianHox/blob/master/03-SCRIPTS/make_subalignment2)
 
  `./make_subalignment2 --tree=IQTree_Initial.treefile --aln=all_hox_plus.fa_wholeSeqs --root=C_sowe.0035330 --pre=Nvec > subalign`
 
