@@ -1,0 +1,181 @@
+#!/usr/bin/perl
+
+# THIS VERSION ACCEPTS A FASTA FILE INSTEAD OF PHYLIP
+
+use strict;
+use warnings;
+use JFR::Fasta;
+use Getopt::Long;
+use Data::Dumper;
+
+our $VERSION = '0.04';
+our $AUTHOR  = 'Joseph F. Ryan <joseph.ryan@whitney.ufl.edu>';
+
+MAIN: {
+    my $rh_o = process_opts();
+    my $rh_taxa = get_subtree_taxa($rh_o->{'tree'},$rh_o->{'pre'},$rh_o->{'root'});
+    my $rh_aln = get_aln($rh_o->{'aln'});
+    my $head = check_aln($rh_aln,$rh_taxa);
+    make_sure_subtree_taxa_are_in_aln($rh_taxa,$rh_aln);
+    if ($rh_o->{'phylip'}) {
+        print_phylip_aln($head,$rh_aln,$rh_taxa);
+    } else {
+        print_fasta_aln($rh_aln,$rh_taxa);
+    }
+}
+
+sub print_fasta_aln {
+    my $rh_a = shift;
+    my $rh_t = shift;
+
+    foreach my $key (keys %{$rh_a}) {
+        next unless ($rh_t->{$key});
+        print ">$key\n$rh_a->{$key}\n";
+    }
+}
+
+sub print_phylip_aln {
+    my $h = shift;
+    my $rh_a = shift;
+    my $rh_t = shift;
+
+    my $len = _longest_taxa_name($rh_a);
+    $len += 2;
+
+    print "$h\n";
+    foreach my $key (keys %{$rh_a}) {
+        next unless ($rh_t->{$key});
+        print sprintf("%-${len}s",$key);
+        print "$rh_a->{$key}\n";
+    }
+}
+
+sub _longest_taxa_name {
+    my $rh_a = shift;
+    my $longest = 0;
+    foreach my $key (keys %{$rh_a}) {
+        my $len = length($key);
+        $longest = $len unless ($longest > $len);
+    }
+    return $longest;
+}
+
+sub make_sure_subtree_taxa_are_in_aln {
+    my $rh_t = shift;
+    my $rh_a = shift;
+    foreach my $t (keys %{$rh_t}) {
+        die "taxa '$t' is not in the alignment" unless ($rh_a->{$t});
+    }
+}
+
+sub get_aln {
+    my $alnfile = shift;
+    my %aln = ();
+    my $fp = JFR::Fasta->new($alnfile);
+    while (my $rec = $fp->get_record()) {
+        my $id = JFR::Fasta->get_def_w_o_gt($rec->{'def'});
+        $id =~ s/\s+$//;
+        $aln{$id} = $rec->{'seq'};
+    }
+    return \%aln;
+}
+
+sub check_aln {
+    my $rh_aln = shift;
+    my $rh_tax = shift;
+    my $n_taxa = 0;
+    my $n_cols = 0;
+    foreach my $key (keys %{$rh_aln}) {
+        $n_taxa++ if ($rh_tax->{$key});
+        my $len = length($rh_aln->{$key});
+        if ($n_cols) {
+            die "alignments have different lengths" unless ($n_cols == $len);
+        } else {
+            $n_cols = $len;
+        }
+    }
+    my $head = "      $n_taxa    $n_cols";
+    return $head;
+}
+
+sub get_subtree_taxa {
+    my $t = shift;
+    my $p = shift;
+    my $r = shift;
+    my %taxa = ();
+    my $code = do { local $/; <DATA> };
+    $code =~ s/ZZZTREE/"$t"/;
+    $code =~ s/ZZZPAT/"$p"/;
+    $code =~ s/ZZZROOT/"$r"/;
+    my @out = qx/python3 -c '$code'/;
+    foreach my $o (@out) {
+        chomp $o;
+        $o =~ s/'//g;
+        $o =~ s/\s+$//g;
+        $taxa{$o}++;
+    }
+    return \%taxa;
+}
+
+sub process_opts {
+    my %opts = ('tree' => '', 'aln' => '', 'prefix' => '', 'phylip' => '',
+                'root' => '', 'help' => '', 'version' => '');
+    my $opt_results = Getopt::Long::GetOptions('tree=s' => \$opts{'tree'},
+                                                'aln=s' => \$opts{'aln'},
+                                                'pre=s' => \$opts{'pre'},
+                                               'root=s' => \$opts{'root'},
+                                               'phylip' => \$opts{'phylip'},
+                                              'version' => \$opts{'version'},
+                                                 'help' => \$opts{'help'});
+   $opts{'version'} && version();
+   $opts{'help'} && usage();
+   $opts{'tree'} || usage();
+   $opts{'aln'}  || usage();
+   $opts{'root'} || usage();
+   $opts{'pre'}  || usage();
+   return \%opts;
+}
+
+sub version {
+    die "$0 version $VERSION\n";
+}
+
+sub usage {
+    die "usage: $0 --tree=<newick_treefile> --aln=<fasta_alignment> --root=<root_taxa> --pre=<prefix> [--phylip] [--help]\n";
+}
+
+# This python code below accepts a treefile in newick format and a prefix of a 
+# subset of taxa in the tree (usually a desired ingroup) and returns all 
+# taxa descending from the most recent common ancestor of all taxa with
+# the specified prefix
+
+__DATA__
+import dendropy
+from dendropy.calculate import treecompare
+
+def process_node(node):
+    for child in node.child_nodes():
+        process_node(child)
+    if node.taxon is not None:
+        print("%s " % (node.taxon))
+
+tree = ZZZTREE
+pat = ZZZPAT
+rt = ZZZROOT
+
+tree0 = dendropy.Tree.get(
+        preserve_underscores=True,
+        path=tree,
+        schema="newick")
+
+hs_taxa = set(taxon for taxon in tree0.taxon_namespace
+        if taxon.label.startswith(pat))
+hs_labels = set([t.label for t in hs_taxa])
+
+root_node = tree0.mrca(taxon_labels=[rt])
+tree0.reroot_at_node(root_node, update_bipartitions=True)
+mrca = tree0.mrca(taxon_labels=hs_labels)
+process_node(mrca)
+
+
+
