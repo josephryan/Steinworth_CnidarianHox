@@ -24,41 +24,45 @@ requires IQ-tree (http://www.iqtree.org/)
 
  `./make_subalignment2 --tree=IQTree_Initial.treefile --aln=all_hox_plus.fa_wholeSeqs --root=C_sowe.0035330 --pre=Nvec > subalign`
 
-_Add sequences cloned from Cassiopea xamachana to the subalignment_
+### 5\. Add sequences cloned from Cassiopea xamachana to 'subalign' and repeat pruning step
 
-### 5\. Using the resulting alignment from make_subalignment2 run the following ML trees 
+`raxmlHPC-PTHREADS-SSE3 -T 25 -p 1234 -# 25 -m PROTGAMMALG -s subalign -n raxML_mp`
+
+`./make_subalignment2 --tree=raxML_mp --aln=subalign --root=C_sowe.0035330 --pre=Nvec > subalign2`
+
+### 6\. Using the resulting alignment from make_subalignment2 run the following ML trees 
 
   a\. RAXML with 25 starting parsimony trees
   
-   `raxmlHPC-PTHREADS-SSE3 -T 25 -p 1234 -# 25 -m PROTGAMMALG -s subalign -n raxML_mp`
+   `raxmlHPC-PTHREADS-SSE3 -T 25 -p 1234 -# 25 -m PROTGAMMALG -s subalign2 -n raxML_mp`
 
   b\. RAXML with 25 random starting trees
   
-   `raxmlHPC-PTHREADS-SSE3 -T 25 -d -p 1234 -# 25 -m PROTGAMMALG -s subalign -n raxML_rt`
+   `raxmlHPC-PTHREADS-SSE3 -T 25 -d -p 1234 -# 25 -m PROTGAMMALG -s subalign2 -n raxML_rt`
 
   c\. IQTREE
   
-   `iqtree -m LG+G4 -s subalign -pre iqtree -bb 1000`
+   `iqtree -m LG+G4 -s subalign2 -pre iqtree -bb 1000`
 
-### 6\. Evaluate the likelihood scores of the IQTREE using RAxML (for apples-to-apples comparison of likelihoods)
+### 7\. Evaluate the likelihood scores of the IQTREE using RAxML (for apples-to-apples comparison of likelihoods)
 
- `raxmlHPC-SSE3 -f e -m PROTGAMMALG -t iqtree.treefile -s subalign -n iqtree_raxml`
+ `raxmlHPC-SSE3 -f e -m PROTGAMMALG -t iqtree.treefile -s subalign2 -n iqtree_raxml`
 
 _Compare Final GAMMA-based score of RAXML trees and IQTREE tree_ 
 
-### 7\. For the best tree (in our case this was the RAxML maximum parsimony starting tree) run and apply bootstraps
+### 8\. For the best tree (in our case this was the RAxML maximum parsimony starting tree) run and apply bootstraps
 
- `raxmlHPC -m PROTGAMMALG -s subalign -p 12345 -x 12345 -# 100 -n raxml_mp_best`
+ `raxmlHPC -m PROTGAMMALG -s subalign2 -p 12345 -x 12345 -# 100 -n raxml_mp_best`
  
  `raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxml_mp -z RAxML_bootstrap.raxml_mp_best -n T15`
 
-### 8\. Run Bayesian tree
+### 9\. Run Bayesian tree
 
-`fasta2phy.pl subalign > sub.phy`
+`fasta2phy.pl subalign2 > sub.phy`
 `phy2bayesnex.pl sub.phy > hox.nex`
 
 _Paste the following execution block into hox.nex:_
-`mcmcp ngen=10000000 samplefreq=10000 mcmcdiagn=yes stoprule=yes stopval=0.01       nruns=2 nchains=5 savebrlens=yes; mcmc; sumt filename=FILE.nex nRuns=2 Relburnin=YES BurninFrac=.25 Contype=Allcompat;).`
+`mcmcp ngen=10000000 samplefreq=10000 mcmcdiagn=yes stoprule=yes stopval=0.01 nruns=2 nchains=5 savebrlens=yes; mcmc; sumt filename=FILE.nex nRuns=2 Relburnin=YES BurninFrac=.25 Contype=Allcompat;).`
 
 `mpirun -np 25 mb hox.nex`
 
@@ -73,7 +77,7 @@ _Run ML trees to calculate final GAMMA-based score for Bayesian trees_
 _Compare final GAMMA-based score to RAxML trees and select best tree for main figure_
 
 
-### 9\. Run AU Test
+### 10\. Run AU Test
 
  `perl make_constraint_trees.pl > iq_script.sh`
 
