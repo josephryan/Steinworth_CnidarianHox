@@ -1,5 +1,5 @@
 # Commands used in Steinworth-CnidarianHox
-### 1\. Use  hmm2aln.pl to identify Hox/ParaHox and related homeodomains from translated transcriptomes and protein model files of selected cnidarian datasets.
+#### 1\. Use  hmm2aln.pl to identify Hox/ParaHox and related homeodomains from translated transcriptomes and protein model files of selected cnidarian datasets.
 
 requires: `HMMer` (http://hmmer.org/) and `hmm2aln.pl` (https://github.com/josephryan/hmm2aln.pl)
 
@@ -7,30 +7,30 @@ requires: `HMMer` (http://hmmer.org/) and `hmm2aln.pl` (https://github.com/josep
 
 _Combine all sequences in cnid_hox_plus.fa with bilaterian and known cnidarian homeoboxes to create file, all_hox_plus.fa_
 
-### 2\. Remove sequences with 5 or more gaps (https://github.com/josephryan/Steinworth_CnidarianHox/blob/master/03-SCRIPTS/nogaps.py)
+#### 2\. Remove sequences with 5 or more gaps (https://github.com/josephryan/Steinworth_CnidarianHox/blob/master/03-SCRIPTS/nogaps.py)
 
  `./nogaps.py all_hox_plus.fa`
 
 _Remove duplicate sequences_
 
-### 3\. Generate an initial phylogenetic tree using resulting alignment from `hmm2aln.pl`
+#### 3\. Generate an initial phylogenetic tree using resulting alignment from `hmm2aln.pl`
 
 requires IQ-tree (http://www.iqtree.org/)
 
  `iqtree-omp -s all_hox_plus.fa_wholeSeqs -nt AUTO -bb 1000 -m LG -pre IQTree_Initial > iq.out 2> iq.err`
 
-### 4\. Prune the resulting tree to remove outside the clade defined by N. vectensis
+#### 4\. Prune the resulting tree to remove outside the clade defined by N. vectensis
 (requires `make_subalignment2` https://github.com/josephryan/Steinworth_CnidarianHox/blob/master/03-SCRIPTS/make_subalignment2)
 
  `./make_subalignment2 --tree=IQTree_Initial.treefile --aln=all_hox_plus.fa_wholeSeqs --root=C_sowe.0035330 --pre=Nvec > subalign`
 
-### 5\. Add sequences cloned from Cassiopea xamachana to 'subalign' and repeat pruning step
+#### 5\. Add sequences cloned from Cassiopea xamachana to 'subalign' and repeat pruning step
 
 `raxmlHPC-PTHREADS-SSE3 -T 25 -p 1234 -# 25 -m PROTGAMMALG -s subalign -n raxML_mp`
 
 `./make_subalignment2 --tree=raxML_mp --aln=subalign --root=C_sowe.0035330 --pre=Nvec > subalign2`
 
-### 6\. Using the resulting alignment from make_subalignment2 run the following ML trees 
+#### 6\. Using the resulting alignment to run the following ML trees 
 
   a\. RAXML with 25 starting parsimony trees
   
@@ -44,19 +44,19 @@ requires IQ-tree (http://www.iqtree.org/)
   
    `iqtree -m LG+G4 -s subalign2 -pre iqtree -bb 1000`
 
-### 7\. Evaluate the likelihood scores of the IQTREE using RAxML (for apples-to-apples comparison of likelihoods)
+#### 7\. Evaluate the likelihood scores of the IQTREE using RAxML (for apples-to-apples comparison of likelihoods)
 
  `raxmlHPC-SSE3 -f e -m PROTGAMMALG -t iqtree.treefile -s subalign2 -n iqtree_raxml`
 
 _Compare Final GAMMA-based score of RAXML trees and IQTREE tree_ 
 
-### 8\. For the best tree (in our case this was the RAxML maximum parsimony starting tree) run and apply bootstraps
+#### 8\. For the best tree (in our case this was the RAxML maximum parsimony starting tree) run and apply bootstraps
 
  `raxmlHPC -m PROTGAMMALG -s subalign2 -p 12345 -x 12345 -# 100 -n raxml_mp_best`
  
  `raxmlHPC -m PROTGAMMALG -p 12345 -f b -t RAxML_bestTree.raxml_mp -z RAxML_bootstrap.raxml_mp_best -n T15`
 
-### 9\. Run Bayesian tree
+#### 9\. Run Bayesian tree
 
 `fasta2phy.pl subalign2 > sub.phy`
 `phy2bayesnex.pl sub.phy > hox.nex`
@@ -65,6 +65,9 @@ _Paste the following execution block into hox.nex:_
 `mcmcp ngen=10000000 samplefreq=10000 mcmcdiagn=yes stoprule=yes stopval=0.01 nruns=2 nchains=5 savebrlens=yes; mcmc; sumt filename=FILE.nex nRuns=2 Relburnin=YES BurninFrac=.25 Contype=Allcompat;).`
 
 `mpirun -np 25 mb hox.nex`
+
+_Generate a strict consensus tree for each run:_
+`sumt nRuns=1 ntrees=1 filename=hox.nex Relburnin=YES BurninFrac=.25 Contype=Allcompat`
 
 _Run ML trees to calculate final GAMMA-based score for Bayesian trees_
 
@@ -77,7 +80,7 @@ _Run ML trees to calculate final GAMMA-based score for Bayesian trees_
 _Compare final GAMMA-based score to RAxML trees and select best tree for main figure_
 
 
-### 10\. Run AU Test
+#### 10\. Run AU Test
 
  `perl make_constraint_trees.pl > iq_script.sh`
 
