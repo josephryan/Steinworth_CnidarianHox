@@ -170,7 +170,7 @@ We will test the following topologies with the AU test using IQTREE
 ((ax1,ax1a,bilat-post,bilat-cent),all,other,clades)
 ```
 
-**** 2.8 How we will report results
+#### 2.8 How we will report results
 
 * Report clades as-is where best Baysian and best ML tree agree 
 
@@ -195,6 +195,8 @@ Zwarycz AS, Nossa CW, Putnam NH, Ryan JF. Timing and scope of genomic expansion 
 
 ## 5 PHYLOTOCOL AMENDMENT HISTORY
 
-Version&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Date&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Significant Revisions
-
-1.1&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;13 Sept 2022&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Added re-addition of Cxam genes and a second pruning step, and updated which sister-group relationships were tested in AUTest
+### 1.1 (13 September 2022)
+Additions:
+* Added cloned sequences for Cxam genes that had been removed for having 5 or more gaps
+* Added second pruning step after Cxam genes were added back into alignment
+* For the AU test, instead of only testing a selection of hypotheses, we tested every possible combination of cnidarian clade plus cnidarian or bilaterian clade, in addition to the other select combinations listed.
