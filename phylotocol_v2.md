@@ -111,8 +111,8 @@ After cloning all _C. xamachana_ genes identified and sequencing, we will add ba
 ```
 raxmlHPC-SSE3.PTHREADS -T 25 -p [random_number] -# 25 -m PROTGAMMA[best-fit_model] -s [alignment_file] -n [name]_mp
 ```
-./make_subalignment2 --tree=<newick_treefile> --aln=<phylip_alignment> --root=<root_taxa> --pre=<prefix>
 ```
+./make_subalignment2 --tree=<newick_treefile> --aln=<phylip_alignment> --root=<root_taxa> --pre=<prefix>
 ```
 
 #### 2.5  RAXML with 25 starting parsimony trees and 25 random starting trees; the best fit model will be LG (but we will confirm this using one RAXML run with PROTGAMMAAUTO.
