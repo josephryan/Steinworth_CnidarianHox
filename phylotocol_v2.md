@@ -1,7 +1,7 @@
 # PLANNED ANALYSES FOR PHYLOGENETIC ANALYSIS OF CNIDARIAN HOX AND HOXL GENES
  Principle Investigator: Joseph Ryan and Bailey Steinworth
  
- Draft or Version Number: v.1.2
+ Draft or Version Number: v.1.1
  
  Date: 13 September 2022
 
@@ -196,7 +196,5 @@ Zwarycz AS, Nossa CW, Putnam NH, Ryan JF. Timing and scope of genomic expansion 
 ## 5 PHYLOTOCOL AMENDMENT HISTORY
 
 Version&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Date&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Significant Revisions
-1.1
-1.2
-1.3
-1.4
+
+1.1&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;13 Sept 2022&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Added re-addition of Cxam genes and a second pruning step, and updated which sister-group relationships were tested in AUTest
