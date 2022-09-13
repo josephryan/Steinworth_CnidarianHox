@@ -92,9 +92,9 @@ This script runs hmmsearch, stockholm2fasta, and some custom code to remove inde
 ./hmm2aln.pl --hmm=hd60.hmm --name=HD --fasta_dir=02-RENAMED_DATA --threads=40 --nofillcnf=nofill.hox.conf > cnid_hox_plus.fa
 ```
 
-We will remove from the resulting alignment any sequences with more than 5 gaps (8.3%)
+We will remove from the resulting alignment any sequences with five or more gaps (8.3%).
 
-#### 2.2 Run ML tree
+#### 2.2 Generate an initial phylogenetic tree
 
 ```
 iqtree-omp -s [infile.mafft-gb] -nt AUTO -bb 1000 -m LG -pre [output prefix] > iq.out 2> iq.err
@@ -104,10 +104,18 @@ iqtree-omp -s [infile.mafft-gb] -nt AUTO -bb 1000 -m LG -pre [output prefix] > i
 
 This script takes a prefix of a subset of (our ingroup) taxa and will return an alignment of only those genes within the clade descended from the most recent common ancestor of all genes with the specified prefix. We will use Nematostella as the ingroup prefix.
 ```
-./make_subalignment --tree=<newick_treefile> --aln=<phylip_alignment> --root=<root_taxa> --pre=<prefix>
+./make_subalignment2 --tree=<newick_treefile> --aln=<phylip_alignment> --root=<root_taxa> --pre=<prefix>
+```
+#### 2.4 Add cloned Cxam sequences and repeat pruning step
+After cloning all _C. xamachana_ genes identified and sequencing, we will add back in the cloned sequences for genes that had five or more gaps.
+```
+raxmlHPC-SSE3.PTHREADS -T 25 -p [random_number] -# 25 -m PROTGAMMA[best-fit_model] -s [alignment_file] -n [name]_mp
+```
+./make_subalignment2 --tree=<newick_treefile> --aln=<phylip_alignment> --root=<root_taxa> --pre=<prefix>
+```
 ```
 
-#### 2.4  RAXML with 25 starting parsimony trees and 25 random starting trees; the best fit model will be LG (but we will confirm this using one RAXML run with PROTGAMMAAUTO.
+#### 2.5  RAXML with 25 starting parsimony trees and 25 random starting trees; the best fit model will be LG (but we will confirm this using one RAXML run with PROTGAMMAAUTO.
 
 ```
 raxmlHPC-SSE3.PTHREADS -T 25 -p [random_number] -# 25 -m PROTGAMMA[best-fit_model] -s [alignment_file] -n [name]_mp
@@ -116,7 +124,7 @@ raxmlHPC-SSE3.PTHREADS -T 25 -p [random_number] -# 25 -m PROTGAMMA[best-fit_mode
 raxmlHPC-SSE3.PTHREDAS -T 25 -d -p [random_number] -# 25 -m PROTGAMMA[best-fit_model] -s [alignment_file] -n [name]_rt
 ```
 
-### 2.5 IQTREE
+### 2.6 IQTREE
 ```
 iqtree -m [best-fit_model]+G4 -s [alignment_file] -pre [prefix] -bb 1000
 ```
@@ -137,7 +145,7 @@ raxmlHPC -m PROTGAMMA[best-fit_model] -s [alignment_file] -p 12345 -x 12345 -# 1
 raxmlHPC -m PROTGAMMA[best-fit_model] -p 12345 -f b -t RAxML_bestTree.[name] -z RAxML_bootstrap.[name] -n T15
 ```
 
-#### 2.6 Mr. Bayes
+#### 2.7 Mr. Bayes
 
 We will run 5 MrBayes runs with the following command:
 
@@ -157,12 +165,10 @@ sumt filename=FILE.nex nRuns=2 Relburnin=YES BurninFrac=.25 Contype=Allcompat;
 Since we cannot use Bayesian principles to evaluate our ML trees, we will use ML principles to evaluate the Bayes trees. If Bayes tree has better likelihood score than the ML tree we will report the Bayes tree as our main figure with BS values from above. If our ML tree has a higher likelhood than our Bayes tree we will report the ML tree with Bayesian log likelihood scores.
 All trees will be presented supplement.  And differences between Bayes and ML will be discussed.
 
-#### 2.7 AU Test
+#### 2.8 AU Test
 
-We will test the following topologies with the AU test using IQTREE
+We will test all sister-group relationships between cnidarian and cnidarian or bilaterian genes, plus the following topologies, with the AU test using IQTREE
 ```
-((ax9,gsx),all,other,clades)
-((ax6a,ax6),all,other,clades)
 ((ax6a,ax6,Hox1),all,other,clades)
 ((ax7,ax8a,ax8b,Hox2),all,other,clades)
 ((cdx,HD065,xlox),all,other,clades)
@@ -197,6 +203,6 @@ Zwarycz AS, Nossa CW, Putnam NH, Ryan JF. Timing and scope of genomic expansion 
 
 ### 1.1 (13 September 2022)
 Additions:
-* Added cloned sequences for Cxam genes that had been removed for having 5 or more gaps
-* Added second pruning step after Cxam genes were added back into alignment
-* For the AU test, instead of only testing a selection of hypotheses, we tested every possible combination of cnidarian clade plus cnidarian or bilaterian clade, in addition to the other select combinations listed.
+* Added cloned sequences for Cxam genes that had been removed for having 5 or more gaps (step 2.4)
+* Added second pruning step after Cxam genes were added back into alignment (step 2.4)
+* For the AU test, instead of only testing a selection of hypotheses, we tested every possible combination of cnidarian clade plus cnidarian or bilaterian clade, in addition to the other select combinations listed (step 2.8).
