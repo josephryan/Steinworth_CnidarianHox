@@ -41,19 +41,19 @@ ax9  - Anthox9
 
 *Ccru* - *Calvadosia cruxmelitensis* (Staurozoa)
 
-*Cfle* - *Chironex fleckeri* (Cubozoa)
-
 *Aala* - *Alatina alata* (Cubozoa)
 
 *Cxam* - *Cassiopea xamachana* (Scyphozoa)
 
-*Cfus* - *Chrysaora fuscescens* (Scyphozoa)
-
-#*Chem* - *Clytia hemisphaerica (Hydrozoa)
+*Chem* - Clytia hemisphaerica (Hydrozoa)
 
 *Hvul* - *Hydra vulgaris* (Hydrozoa)
 
 *Csow* - *Craspedacusta sowerbii* (Hydrozoa)
+
+*Pcar* - *Podocoryna carnea* (Hydrozoa)
+
+*Came* - *Ceriantheopsis americanus* (Ceriantheria)
 
 *Hsap* - *Homo sapiens* (Bilateria)
 
@@ -85,7 +85,7 @@ Accurately classify cnidarian Hox and ParaHox genes from a wide array of cnidari
 
 #### 2.1 Build dataset.
 
-We will start with four sets of Hox/ParaHox homeodomains from the curated HomeoDB (Zhong et al, 2008): *Homo sapiens*, *Branchiostoma floridae*, *Drosophila melanogaster*, and *Tribolium castaneum*. We will include the spiralia Hox/ParaHox homeodomains *Capitella teleta* and *Crassostrea gigas* (as classified in Paps et al, 2015 and Zwarycz et al, 2015). We will include the Hox/ParaHox genes from *Nematostella vectensis* and *Acropora digitifera* (as classified in DuBuc et al, 2012). We will include the *Hydra magnipapillata* and *Clytia hemisphaerica* Hox/ParaHox genes (as classified in Chiori et al, 2009). NOTE: HmaCnox4 is listed as pirS39067; we could not find this so are using CAA45911.1. We will use hd60.hmm hidden Markov model from Zwarycz et al 2015 to search transcriptomes from the following:  *Anthopleura elegantissima*, *Lobactis scutaria*, *Corallium rubrum*, *Renilla reniforms*, *Eunicella cavolinii*, *Haliclystus sanjuanensis*, *Calvadosia cruxmelitensis*, *Chironex fleckeri*, *Alatina alata*, *Cassiopea xamachana*, *Chrysaora fuscescens*, and *Craspedacusta sowerbyi*.
+We will start with four sets of Hox/ParaHox homeodomains from the curated HomeoDB (Zhong et al, 2008): *Homo sapiens*, *Branchiostoma floridae*, *Drosophila melanogaster*, and *Tribolium castaneum*. We will include the spiralia Hox/ParaHox homeodomains *Capitella teleta* and *Crassostrea gigas* (as classified in Paps et al, 2015 and Zwarycz et al, 2015). We will include the Hox/ParaHox genes from *Nematostella vectensis* and *Acropora digitifera* (as classified in DuBuc et al, 2012). We will include the *Hydra vulgaris* and *Clytia hemisphaerica* Hox/ParaHox genes (as classified in Chiori et al, 2009). We will use hd60.hmm hidden Markov model from Zwarycz et al 2015 to search transcriptomes from the following:  *Anthopleura elegantissima*, *Lobactis scutaria*, *Corallium rubrum*, *Renilla reniformis*, *Eunicella cavolini*, *Haliclystus sanjuanensis*, *Calvadosia cruxmelitensis*,  *Alatina alata*, *Cassiopea xamachana*, *Craspedacusta sowerbi*, *Podocoryna carnea*, and *Ceriantheopsis americanus*.
 
 This script runs hmmsearch, stockholm2fasta, and some custom code to remove indels and fill end gaps.
 ```
