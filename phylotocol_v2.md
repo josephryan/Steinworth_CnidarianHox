@@ -1,6 +1,8 @@
 # PLANNED ANALYSES FOR PHYLOGENETIC ANALYSIS OF CNIDARIAN HOX AND HOXL GENES
  Principle Investigator: Joseph Ryan and Bailey Steinworth
+ 
  Draft or Version Number: v.1.2
+ 
  Date: 13 September 2022
 
 ## LIST OF ABBREVIATIONS
