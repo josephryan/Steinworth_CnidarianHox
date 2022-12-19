@@ -7,22 +7,22 @@ begin taxa;
 	Aala_Cnox3a
 	Aala_Cnox3b
 	Aala_Gsx
-	'Aala_Hox914B.1'
-	'Aala_Hox914B.2'
+	Aala_Hox914B.1
+	Aala_Hox914B.2
 	Aala_Hox914C
-	'Adig.Ax1'[&!color=#e4bf65]
-	'Adig.Ax1a'[&!color=#e4bf65]
-	'Adig.Ax6'[&!color=#e4bf65]
-	'Adig.Ax6a'[&!color=#e4bf65]
-	'Adig.Ax6b'[&!color=#e4bf65]
-	'Adig.Ax7_8'[&!color=#e4bf65]
-	'Adig.EVX'[&!color=#e4bf65]
-	'Adig.GSX'[&!color=#e4bf65]
-	'Adig.HLXB9'[&!color=#e4bf65]
-	'Adig.MOXb'[&!color=#e4bf65]
-	'Adig.MOXc'[&!color=#e4bf65]
-	'Adig.MOXd'[&!color=#e4bf65]
-	'Aele_Anthox7/8'
+	Adig.Ax1
+	Adig.Ax1a
+	Adig.Ax6
+	Adig.Ax6a
+	Adig.Ax6b
+	Adig.Ax7_8
+	Adig.EVX
+	Adig.GSX
+	Adig.HLXB9
+	Adig.MOXb
+	Adig.MOXc
+	Adig.MOXd
+	Aele_Anthox7/8
 	Aele_Gbx
 	Aele_Gsx
 	Aele_HlxB9-Like
@@ -50,7 +50,7 @@ begin taxa;
 	Bflo_Mnxb
 	Bflo_Mox
 	Bflo_Xlox
-	'C_crux.0002132'[&!color=#98ad81]
+	Ccru_Cnox5
 	Came_0027763
 	Came_Anthox6
 	Came_Anthox6a
@@ -74,20 +74,20 @@ begin taxa;
 	Cg_Post1
 	Cg_Post2
 	Cg_Xlox
-	Chem_Cdx[&!color=#386cac]
-	Chem_Eve[&!color=#386cac]
-	Chem_Gsx[&!color=#386cac]
-	Chem_Hox1[&!color=#386cac]
-	Chem_Hox9-14A[&!color=#386cac]
-	Chem_Hox9-14B[&!color=#386cac]
-	Chem_Hox9-14C[&!color=#386cac]
-	Chem_Mox[&!color=#386cac]
+	Chem_Cdx
+	Chem_Eve
+	Chem_Gsx
+	Chem_Hox1
+	Chem_Hox9-14A
+	Chem_Hox9-14B
+	Chem_Hox9-14C
+	Chem_Mox
 	Crub_Anthox1
 	Crub_Anthox101
 	Crub_Anthox102
 	Crub_Anthox6
 	Crub_Anthox6a
-	'Crub_Anthox7/8-like'
+	Crub_Anthox7/8-like
 	Crub_Gbx
 	Crub_Gsx
 	Crub_Mox
@@ -153,10 +153,10 @@ begin taxa;
 	Ecav_Anthox101
 	Ecav_Anthox6a
 	Ecav_Gsx
-	Edic_Cnox1[&!color=#386cac]
-	Edic_Cnox3[&!color=#386cac]
-	Edic_Cnox4[&!color=#386cac]
-	Edic_Cnox5[&!color=#386cac]
+	Edic_Cnox1
+	Edic_Cnox3
+	Edic_Cnox4
+	Edic_Cnox5
 	Hsan_Mox
 	Hsap_CDX1
 	Hsap_CDX2
@@ -210,68 +210,68 @@ begin taxa;
 	Hsap_MEOX2
 	Hsap_MNX1
 	Hsap_PDX1
-	Hvul_Cnox1[&!color=#386cac]
-	Hvul_Gsx[&!color=#386cac]
-	Hvul_Hoxa[&!color=#386cac]
-	Hvul_Hoxb[&!color=#386cac]
-	Hvul_Hoxc2[&!color=#386cac]
-	Hvul_Hoxc3[&!color=#386cac]
-	Hvul_Hoxd[&!color=#386cac]
-	Hvul_Mox[&!color=#386cac]
+	Hvul_Cnox1
+	Hvul_Gsx
+	Hvul_Hoxa
+	Hvul_Hoxb
+	Hvul_Hoxc2
+	Hvul_Hoxc3
+	Hvul_Hoxd
+	Hvul_Mox
 	Lscu_Anthox1
 	Lscu_Anthox1a
 	Lscu_Gbx
 	Lscu_Mox
-	Nvec_Evx[&!color=#e4bf65]
-	Nvec_Gbx[&!color=#e4bf65]
-	Nvec_Gsx[&!color=#e4bf65]
-	Nvec_HD065[&!color=#e4bf65]
-	Nvec_HlxB9[&!color=#e4bf65]
-	Nvec_MoxA[&!color=#e4bf65]
-	Nvec_MoxB[&!color=#e4bf65]
-	Nvec_MoxC[&!color=#e4bf65]
-	Nvec_MoxD[&!color=#e4bf65]
-	Nvec_Ro[&!color=#e4bf65]
-	Nvec_anthox1[&!color=#e4bf65]
-	Nvec_anthox1a[&!color=#e4bf65]
-	Nvec_anthox6[&!color=#e4bf65]
-	Nvec_anthox6a[&!color=#e4bf65]
-	Nvec_anthox7[&!color=#e4bf65]
-	Nvec_anthox8a[&!color=#e4bf65]
-	Nvec_anthox8b[&!color=#e4bf65]
-	Nvec_anthox9[&!color=#e4bf65]
-	Pcar_Cnox1-Pc[&!color=#386cac]
-	Pcar_Cnox2-Pc[&!color=#386cac]
-	Pcar_Cnox4-Pc[&!color=#386cac]
-	Pcar_Gsx[&!color=#386cac]
-	'Rren_Anthox1.1'
-	'Rren_Anthox1.2'
+	Nvec_Evx
+	Nvec_Gbx
+	Nvec_Gsx
+	Nvec_HD065
+	Nvec_HlxB9
+	Nvec_MoxA
+	Nvec_MoxB
+	Nvec_MoxC
+	Nvec_MoxD
+	Nvec_Ro
+	Nvec_anthox1
+	Nvec_anthox1a
+	Nvec_anthox6
+	Nvec_anthox6a
+	Nvec_anthox7
+	Nvec_anthox8a
+	Nvec_anthox8b
+	Nvec_anthox9
+	Pcar_Cnox1-Pc
+	Pcar_Cnox2-Pc
+	Pcar_Cnox4-Pc
+	Pcar_Gsx
+	Rren_Anthox1.1
+	Rren_Anthox1.2
 	Rren_Anthox101
 	Rren_Anthox102
 	Rren_Anthox6
 	Rren_Anthox6a
-	'Rren_Anthox7/8-like'
+	Rren_Anthox7/8-like
 	Rren_Gbx
 	Rren_Gsx
 	Rren_Mox
 	Rren_Ro
-	Tcas_AbdB[&!color=#000000]
-	Tcas_Btn[&!color=#000000]
-	Tcas_Cad2[&!color=#000000]
-	Tcas_Cx[&!color=#000000]
-	Tcas_Dfd[&!color=#000000]
-	Tcas_Eve[&!color=#000000]
-	Tcas_Exex[&!color=#000000]
-	Tcas_Ind[&!color=#000000]
-	Tcas_Unpg[&!color=#000000]
-	Tcas_Utx[&!color=#000000]
-	Tcas_abdA[&!color=#000000]
-	Tcas_ftz[&!color=#000000]
-	Tcas_lab[&!color=#000000]
-	Tcas_mxp[&!color=#000000]
-	Tcas_ptl[&!color=#000000]
-	Tcas_zen1[&!color=#000000]
-	Tcas_zen2[&!color=#000000]
+	Tcas_AbdB
+	Tcas_Btn
+	Tcas_Cad2
+	Tcas_Cx
+	Tcas_Dfd
+	Tcas_Eve
+	Tcas_Exex
+	Tcas_Ind
+	Tcas_Unpg
+	Tcas_Utx
+	Tcas_abdA
+	Tcas_ftz
+	Tcas_lab
+	Tcas_mxp
+	Tcas_ptl
+	Tcas_zen1
+	Tcas_zen2
 ;
 end;
 
